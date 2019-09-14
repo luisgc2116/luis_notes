@@ -10,11 +10,11 @@ Let's begin with simple geometric area, and how we can begin our understanding o
 
 Furthermore, let's look at what happens when overlap these circles.
 
-We don't, or can't, get the probability of a random variable, so we approximate. Frequentist statistics says we can express the probability of this random variable by taking the **counts** of the number of particles that hit inside the area,$n_x$, vs the total number, $n_t$. As the number of trials, $n_t$ goes to infinity, we should approach the 'true' probability.
+We don't, or can't, get the probability of a random variable, so we approximate. Frequentist statistics says we can express the probability of this random variable by taking the **counts** of the number of particles that hit inside the area,$$n_x$$, vs the total number, $$n_t$$. As the number of trials, $n_t$ goes to infinity, we should approach the 'true' probability.
 
 $$P(x) = \lim_{x \to \infty} \frac{n_x}{n_t}$$.
 
-If we think of having one particle and shooting it $n \to \infty$ times, then every trial is called an **event**. Furthermore, every event has an associated probability, where later events have better estimates of the true probability since they take into account the information of all previous events; *probability converges over a large number of events*.
+If we think of having one particle and shooting it $$n \to \infty$$ times, then every trial is called an **event**. Furthermore, every event has an associated probability, where later events have better estimates of the true probability since they take into account the information of all previous events; *probability converges over a large number of events*.
 
 
 
