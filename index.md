@@ -1,7 +1,9 @@
 
 ## Preliminaries
 
-1. [Introduction](preliminaries/introduction/): What is probabilistic graphical modeling? Overview of the course.
+1a. [Introduction](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
+
+1b. [Introduction](preliminaries/introduction/): What is probabilistic graphical modeling? Overview of the course.
 
 2. [Review of probability theory](preliminaries/probabilityreview): Probability distributions. Conditional probability. Random variables (*under construction*).
 
