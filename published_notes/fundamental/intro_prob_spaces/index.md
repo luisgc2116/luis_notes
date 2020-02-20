@@ -31,8 +31,33 @@ We can think of the **event space** as a collection of subsets composed from the
 1. $$\mathcal{F}$$ may contain the empty set $$\emptyset$$ and $$\Omega$$
 2. $$\mathcal{F}$$ is closed under complements: $$A \in \mathcal{F}$$, then $$A^c \in \mathcal{F}$$, where $$A^c = \{ \omega \in  \Omega \vert \omega \notin A \} $$; $$A^c$$ is the subset of elements not found in the subset $$A$$.
 
-3. $$\mathcal{F}$$ is closed under countable unions: If $$A_1, A_2, \dots \in \mathcal{F}$$, the $$\bigcup_{i=1}^{\infty} A_i \in \mathcal{F}$$. In other words, the unions of subset found in $$\mathcal{F}$$ are still within $$\mathcal{F}$$. Similarly,  $$\mathcal{F}$$ is also closed under countable intersections:  $$\bigcap_{i=1}^{\infty} A_i \in \mathcal{F}$$. This is a result from De Morgan's Law, which states that $$(A \cup B)^c = A^c \cap B^c$$ and $$(A \cap B)^c = A^c \cup B^c$$ and the previous two properties, since,
+3. $$\mathcal{F}$$ is closed under countable unions: If $$A_1, A_2, \dots \in \mathcal{F}$$, the $$\bigcup_{i=1}^{\infty} A_i \in \mathcal{F}$$. In other words, the unions of subset found in $$\mathcal{F}$$ are still within $$\mathcal{F}$$. Similarly,  $$\mathcal{F}$$ is also closed under countable intersections:  $$\bigcap_{i=1}^{\infty} A_i \in \mathcal{F}$$. This is a result from De Morgan's Law, which states that $$(A \cup B)^c = A^c \cap B^c$$ and $$(A \cap B)^c = A^c \cup B^c$$ and the previous two properties.
+
+Note:
+1. Having the complement of a set A written as $$\overline{A}$$ instead of $$A^c$$ makes Morgan's Law closer to its usual written form as: $$\overline{A \cap B} = \overline{A} \cup \overline{B}$$ and $$\overline{A \cup B} = \overline{A} \cap \overline{B}$$. Or even $$\neg(A \cap B) = \neg A \cup \neg B$$ and $$\neg(A \cup B) = \neg A \cap \neg B$$.
+
+Technically, $$\mathcal{F}$$ *can be* the entire possibility of subsets in each problem we are trying to represent, but that is not useful in all representations. For instance, if we had the die example again,  {{},} .
+
+If we had the die from the previous example with a sample space of 6, and we asked what the probability was of getting any of the 6 values, (assuming a normal die where each face is equally likely) then we'd have $$P(s \in \mathcal{F})=1/6$$. Our event space here would be {{1},{2},{3},{4},{5},{6}}, since each subset would consist of a single unique element from our sample space which represents one face. Another $$\mathcal{F}$$ we can use is the entire possible subsets {{},{1}, {1,2}, ...}. Notice how some of these elements like {1,2} don't even make sense for our what we are representing, so we create our event space $$\mathcal{F}$$ under the conditions that fit our problem.
+
+If we instead wanted to take the space where we want the probability of getting an even face value, then our event space would consist of subsets of the sample space where there are even numbers and another where is not 
+(ie. the compliment of the set of even numbers); hence, {{2,4,6},{1,3,5}}. The probability of getting a number that is even is then 1/2, since our total event space is 2, and only one set satisfies the original question we were trying to represent.
  
+### 3. **Probability Measure** $$P$$
+
+### - Intuition
+The **Probability Measure** $$P$$ gives probabilities to the elements in the event space, $$\mathcal{F}$$. Using our music example, this is just assigning a probability that you will listen to a song in the event space. The total probability among all events in $$\mathcal{F}$$ is 1. 
+
+
+### - Mathematical Perspective 
+The **Probability Measure** $$P$$ is a function that maps an event space $$\mathcal{F}$$ to probabilities, so $$P: \mathcal{F} \rightarrow \mathbb{R}$$. A few properties on P are that:
+1. $$P(E) \geq 0$$ for all subsets $$E \in \mathcal{F}$$
+2. $$\sum_{s \in \mathcal{F}} P(s) = 1$$
+3. $$P(E \cup F) = P(E) + P(F)$$ if $$E \cap F=\emptyset$$ for all subsets $$E,F \in \mathcal{F}$$. Furthermore, we can see this has countable additivity as well: $$A_1, A_2, \dots \in \mathcal{F}$$, the $$P(\bigcup_{i=1}^{\infty} A_i) = \sum_i^{\infty} P(A_i)$$, where $$A_j \cap A_k = \emptyset \text{ if } j \neq k$$.
+
+
+
+Using the die example one more time, if your task was to find the probability of getting an even number, you had an event space of the set of even numbers and odd numbers(ie. the set of even number's complement), $$\mathcal{F} = \text{{{2,4,6},{1,3,5}}}$$. Since we have two sets of equal size, we can say that the set of even numbers can be mapped to a probability of $$1/2$$. However, this mapping isn't always so clear, and so you are either given this mapping or you find a way to find that relationship.
 
 
 ### Sources
