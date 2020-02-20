@@ -72,4 +72,4 @@ Using the die example one more time, if your task was to find the probability of
 
 <br/>
 
-|[Index](../../../) | [Previous](../../../) | [Next](../probabilityreview)|
+|[Index](../../../../../) | [Previous](../../../) | [Next](../probabilityreview)|
