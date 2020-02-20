@@ -1,15 +1,11 @@
 
 ## Preliminaries
 
-1. [Introduction to Probability Spaces](published_notes/fundamental/intro_prob_spaces/)
+1. [Introduction to Probability Spaces](published_notes/fundamental/intro_prob_spaces/): Introduction to representing something in a probability triplet.
 
-1a. [Introduction](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
+2. [Introduction to Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
 
-1b. [Introduction](preliminaries/introduction/): What is probabilistic graphical modeling? Overview of the course.
-
-2. [Review of probability theory](preliminaries/probabilityreview): Probability distributions. Conditional probability. Random variables (*under construction*).
-
-3. [Examples of real-world applications](preliminaries/applications): Image denoising. RNA structure prediction. Syntactic analysis of sentences. Optical character recognition (*under construction*).
+3. [Review of probability theory](preliminaries/probabilityreview): Probability distributions. Conditional probability. Random variables (*under construction*).
 
 ## Representation
 
