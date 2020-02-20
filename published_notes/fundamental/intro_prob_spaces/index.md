@@ -26,6 +26,13 @@ Intuitively, we can think of the **event space** as subsets under some condition
 **How** we create this event space depends heavily on what question we are trying to ask and how we are trying to *represent* that question. The manner with which we represent a question is important because these sets are what we will map probabilities to; if we have irrelevant sets representing our question, we are missrepresenting our problem and the associated probabilities will not mean much. For instance, music you absolutely hate (or even duck sounds disguised as music) in your music sample space are useless, so there's no need to include it in our event space; having $$\mathcal{F}$$ consist of only the songs you already like represents the problem a lot better.
 
 
+### - Mathematical Perspective
+We can think of the **event space** as a collection of subsets composed from the *event space*. An event space $$\mathcal{F}$$ is known as a $$\sigma$$-Algebra over $$\Omega$$. A $$\sigma$$-Algebra are just the subsets of $$\Omega$$ that represent our problem. Formally, $$\mathcal{F}$$ is a collection of subsets of $$\Omega$$ that satisfy the following properties:
+1. $$\mathcal{F}$$ may contain the empty set $$\emptyset$$ and $$\Omega$$
+2. $$\mathcal{F}$$ is closed under complements: $$A \in \mathcal{F}$$, then $$A^c \in \mathcal{F}$$, where $$A^c = \{ \omega \in  \Omega | \omega \notin A \} $$; $$A^c$$ is the subset of elements not found in the subset $$A$$.
+3. $$\mathcal{F}$$ is closed under countable unions: If $$A_1, A_2, \dots \in \mathcal{F}$$, the $$\bigcup_{i=1}^{\infty} A_i \in \mathcal{F}$$. In other words, the unions of subset found in $$\mathcal{F}$$ are still within $$\mathcal{F}$$. Similarly,  $$\mathcal{F}$$ is also closed under countable intersections:  $$\bigcap_{i=1}^{\infty} A_i \in \mathcal{F}$$. This is a result from De Morgan's Law, which states that $$(A \cup B)^c = A^c \cap B^c$$ and $$(A \cap B)^c = A^c \cup B^c$$ and the previous two properties, since,
+ 
+
 
 
 ### Sources
