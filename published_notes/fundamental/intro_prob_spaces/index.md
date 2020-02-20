@@ -3,7 +3,7 @@ layout: post
 title: Introduction to Probability Spaces 
 ---
 
-When describing something that requires a probabilistic description, we have to define how probability will describe our task. This requires us to define a clear mathematical description as to how the task can be expressed mathematically through a Probability Triple. The elements of this triplet $$(\Omega, \mathcal{F}, P)$$ are defined as follows:
+When describing something that requires a probabilistic description, we have to mathematicall define a **Probability Space**$$^1$$. This requires us to define a mathematical description of probability, which will end up being the Probability Triple. The elements of this triplet $$(\Omega, \mathcal{F}, P)$$ are defined as follows:
 
 1. $$\Omega$$ - The **sample space** is the set of all possible outcomes.
 2. $$\mathcal{F}$$ - An **event space** is a **$$\sigma$$-Algebra** over $$\Omega$$. It is a set of sets composed of the sample space. 
