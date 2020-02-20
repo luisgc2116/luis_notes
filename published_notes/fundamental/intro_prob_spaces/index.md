@@ -33,7 +33,7 @@ We can think of the **event space** as a collection of subsets composed from the
 Note:
 1. Having the complement of a set A written as $\overline{A}$ instead of $A^c$ makes Morgan's Law closer to its usual written form as: $\overline{A \cap B} = \overline{A} \cup \overline{B}$ and $\overline{A \cup B} = \overline{A} \cap \overline{B}$. Or even $\neg(A \cap B) = \neg A \cup \neg B$ and $\neg(A \cup B) = \neg A \cap \neg B$.
 
-Technically, $\mathcal{F}$ *can be* the entire possibility of subsets in each problem we are trying to represent, but that is not useful in all representations. For instance, if we had the die example again,  $\text{ {{},} }$
+Technically, $\mathcal{F}$ *can be* the entire possibility of subsets in each problem we are trying to represent, but that is not useful in all representations. For instance, if we had the die example again, {{},}.
 
 If we had the die from the previous example with a sample space of 6, and we asked what the probability was of getting any of the 6 values, (assuming a normal die where each face is equally likely) then we'd have $P(s \in \mathcal{F})=1/6$. Our event space here would be $\text{{{1},{2},{3},{4},{5},{6}}}$, since each subset would consist of a single unique element from our sample space which represents one face. Another $\mathcal{F}$ we can use is the entire possible subsets $\text{ {{},{1}, {1,2}, ...} }$. Notice how some of these elements like $\text{{1,2}}$ don't even make sense for our what we are representing, so we create our event space $\mathcal{F}$ under the conditions that fit our problem.
 
