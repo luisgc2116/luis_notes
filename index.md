@@ -1,6 +1,8 @@
 
 ## Preliminaries
 
+1. [Introduction to Probability Spaces](published_notes/fundamental/intro_prob_spaces/)
+
 1a. [Introduction](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
 
 1b. [Introduction](preliminaries/introduction/): What is probabilistic graphical modeling? Overview of the course.
