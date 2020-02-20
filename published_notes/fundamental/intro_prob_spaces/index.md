@@ -16,7 +16,7 @@ In order to undestand these further, let's try to build a strong intuition first
 A **sample space** can be thought of as the set of all possible outcomes. Imagine you want to listen to music and you're thinking about which piece of music to choose. Any and all music in your memory can be organized into a set; this is the set of all possible outcomes(songs) that is named the *sample space*.
 
 ### - Mathematical Perspective
-Once again, a **sample space** can be thought of as the set of all possible outcomes. Furthermore, the sample space can be tiny or infinite in size. For example, the set of all outcomes in a coin toss is 2, so the sample space $$\Omega = \text{{heads, tails}}$$; the sample space, or set of all outcomes, of a die is 6 given 6 unique faces, $$\Omega = \text{{1,2,3,4,5,6}}$$. However, as an extreme example, the set of all outcomes that atoms can be arranged in the universe can be truly infinite (ever expanding infinite).
+Once again, a **sample space** can be thought of as the set of all possible outcomes. Furthermore, the sample space can be tiny or infinite in size. For example, the set of all outcomes in a coin toss is 2, so the sample space $$\Omega =$$ {heads, tails}; the sample space, or set of all outcomes, of a die is 6 given 6 unique faces, $$\Omega=$$ {1,2,3,4,5,6}. However, as an extreme example, the set of all outcomes that atoms can be arranged in the universe can be truly infinite (ever expanding infinite).
 
 
 
