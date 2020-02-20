@@ -1,9 +1,9 @@
 
-## Preliminaries
+## Foundations to Probability
 
-1. [Introduction to Probability Spaces](published_notes/fundamental/intro_prob_spaces/): Introduction to representing something in a probability triplet.
+1. [Probability Spaces](published_notes/fundamental/intro_prob_spaces/): Introduction to representing something in a probability triplet.
 
-2. [Introduction to Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
+2. [Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
 
 3. [Review of probability theory](preliminaries/probabilityreview): Probability distributions. Conditional probability. Random variables (*under construction*).
 
