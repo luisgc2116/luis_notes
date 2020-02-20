@@ -36,8 +36,8 @@ We can think of the **event space** as a collection of subsets composed from the
 Note:
 1. Having the complement of a set A written as $$\overline{A}$$ instead of $$A^c$$ makes Morgan's Law closer to its usual written form as: $$\overline{A \cap B} = \overline{A} \cup \overline{B}$$ and $$\overline{A \cup B} = \overline{A} \cap \overline{B}$$. Or even $$\neg(A \cap B) = \neg A \cup \neg B$$ and $$\neg(A \cup B) = \neg A \cap \neg B$$.
 
-If we instead wanted to take the space where we want the probability of getting an even face value, then our event space would consist of subsets of the sample space where there are even numbers and another where is not 
-(ie. the compliment of the set of even numbers); hence, {{2,4,6},{1,3,5}}. The probability of getting a number that is even is then 1/2, since our total event space is 2, and only one set satisfies the original question we were trying to represent.
+Technically, $\mathcal{F}$ *can be* the entire possibility of subsets in each problem we are trying to represent, but that is not useful in all representations. For instance, if we had the die example again,  {{},} .
+
 
  
 ### 3. **Probability Measure** $$P$$
