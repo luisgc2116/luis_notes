@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Introduction to Probability Spaces 
+date:   2020-02-19 21:46:04
+categories: jekyll css
 ---
 
 When describing something that requires a probabilistic description, we have to mathematically define a **Probability Space**$$^1$$ is, which is done via three elements, together named, the Probability Triple. The elements of this triplet $$(\Omega, \mathcal{F}, P)$$ are defined as follows:
