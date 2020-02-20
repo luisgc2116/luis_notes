@@ -36,7 +36,7 @@ We can think of the **event space** as a collection of subsets composed from the
 Note:
 1. Having the complement of a set A written as $$\overline{A}$$ instead of $$A^c$$ makes Morgan's Law closer to its usual written form as: $$\overline{A \cap B} = \overline{A} \cup \overline{B}$$ and $$\overline{A \cup B} = \overline{A} \cap \overline{B}$$. Or even $$\neg(A \cap B) = \neg A \cup \neg B$$ and $$\neg(A \cup B) = \neg A \cap \neg B$$.
 
-Technically, $\mathcal{F}$ *can be* the entire possibility of subsets in each problem we are trying to represent, but that is not useful in all representations. For instance, if we had the die example again,  {{},} .
+Technically, $$\mathcal{F}$$ *can be* the entire possibility of subsets in each problem we are trying to represent, but that is not useful in all representations. For instance, if we had the die example again,  $$\{ \{ \}, \}$$.
 
 
  
