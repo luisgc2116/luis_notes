@@ -59,6 +59,9 @@ The **Probability Measure** $$P$$ is a function that maps an event space $$\math
 
 Using the die example one more time, if your task was to find the probability of getting an even number, you had an event space of the set of even numbers and odd numbers(ie. the set of even number's complement), $$\mathcal{F} = \{\{2,4,6\},\{1,3,5\}\}$$. Since we have two sets of equal size, we can say that the set of even numbers can be mapped to a probability of $$1/2$$. However, this mapping isn't always so clear, and so you are either given this mapping or you find a way to find that relationship.
 
+**Important Note**:
+- If the event space $$\mathcal{F}$$ is discrete, then often $$P$$ is written as $$P(\omega)$$ for some sample in our sample space $$\omega \in \Omega$$. This technically is not correct, since we can ONLY map **events** to **probabilities**. Therefore, this notation is just implicitely saying $$P(\{ s \})$$ for some $$\{ s \} \in \mathcal{F}$$, where $$\mathcal{F}$$ is composed of subset with single, unique elements in $$\Omega$$.
+
 
 ### Sources
 [1] Count Bayesie. [Blog](https://www.countbayesie.com/blog/2015/8/30/picture-guide-to-probability-spaces) <br>
