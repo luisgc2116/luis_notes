@@ -31,6 +31,10 @@ A central idea in probability is that probabilities are ratios between event spa
 
 Mathematically, we have, $$\frac{P(A \cap B)}{P(B)} = \frac{P(A') \cdot P(B')}{P(B)}$$ for $$A',B' \in A \cap B$$. This just means the elements in A and B found in $$A \cap B$$ with their respective probability mappings, $$P(A')$$ and $$P(B')$$, *relative* to the all probabilitues in $$P(B)$$, defines what it means to be **conditional**. We write that the **conditional probability of A with respect to B is**:
 
+\begin{equation}
+    P(A \vert B) = \frac{P(A \cap B)}{P(B)}
+\end{equation}
+
 
 <br/>
 
