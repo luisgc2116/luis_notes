@@ -7,7 +7,7 @@ categories: jekyll css
 
 Let's expand our intuition for probability. To do so, we have to extend our understanding of sets as well. Recall from the previous entry on Probability Spaces that the glue that held the intuition and mathematical explanations was the concept of sets. 
 
-Currently, we know that probabilities under a Probability Triplet $$(\Omega, \mathcal{F}, P)$$ maps elements of an event space $$\mathcal{F}$$ to probabilities P, which are real numbers in $$\mathbb{R}$$. In order to ease the notation to be more readable, let's say the probability of an event $$A \in \mathcal{F}$$ to be $$P(A)$$.
+Currently, we know that probabilities under a Probability Triplet $$(\Omega, \mathcal{F}, P)$$ maps elements of an event space $$\mathcal{F}$$ to probabilities P, which are real numbers in $$\mathbb{R}$$. In order to ease the notation to be more readable, let's say the probability of events $$A \in \mathcal{F_A}$$ to be $$P(A)$$.
 
 Now, let's visualize the event space A as a circle, as in Figure 1a. Any element in this circle is part of the set A that has a probability $$P(A)$$. Furthermore, let's say we have a second event space B with elements in B also having probabilities $$P(B)$$. If we assume these circles intersected as in Figure 1b, then the set intersection between $$A $$and $$B$$ is $$A \cap B$$. 
 
