@@ -24,6 +24,13 @@ A different perspective to take is that we are creating an event space $$\mathca
 **Example 1:** <br>
 Let's say the event space for A had two elements: one with even elements and the other with odd. The second event space B also had two elements, but these would one would have sample elements greater than 3 and the other would have equal to or less than 3. If we wanted the probaility of getting an even number that is ALSO greater than 3, then we have $$P(A=\text{even} \cap B=\text{greater than 3})$$. In the set intersection $$(A=\text{even} \cap B=\text{greater than 3})$$, we have $$\{2,4,6\}$$ and $$\{4,5,6\}$$ which satisfy the condition. Let these probabilities be $$P(A=\{2,4,6\})=0.5$$ and $$P(B=\{4,5,6\})=0.5$$. The probability of getting both requires us to ask: does it matter if we get $$P(A=\{2,4,6\})$$ before $$P(B=\{4,5,6\})=0.5$$, or vice versa? If the answer is no, we say these two are 
 
+### Conditional Probabilities
+Let's try to understand what happens where event spaces are NOT *independent*; this is named **Conditional Probability**. 
+
+A central idea in probability is that probabilities are ratios between event spaces. If we go along this line of thinking, what happens if we take the ratio of getting the probability of the intersection between elements in A and B *per  probability of the elements in B* in $$P(A \cap B)$$, hence $$\frac{P(A \cap B)}{P(B)}$$? We can see a visually clearer description in Figure 2. Given that A is much larger than B, $$P(A \cap B)$$ will account for a larger portion of $$P(B)$$ than it will for $$P(A)$$, hence $$\frac{P(A \cap B)}{P(B)} > \frac{P(A \cap B)}{P(A)}$$.
+
+Mathematically, we have, $$\frac{P(A \cap B)}{P(B)} = \frac{P(A') \cdot P(B')}{P(B)}$$ for $$A',B' \in A \cap B$$. This just means the elements in A and B found in $$A \cap B$$ with their respective probability mappings, $$P(A')$$ and $$P(B')$$, *relative* to the all probabilitues in $$P(B)$$, defines what it means to be **conditional**. We write that the **conditional probability of A with respect to B is**:
+
 
 <br/>
 
