@@ -36,12 +36,15 @@ Mathematically, we have, $$\frac{P(A \cap B)}{P(B)} = \frac{P(A') \cdot P(B')}{P
 \end{equation}
 
 Lastly, we can end with generalizing this conditional probability to an arbitrary number of event spaces as follows:
+
+$$
 \begin{align}
     P(S_1 \cap S_2 \cap \dots \cap S_{k}) 
         &= P(S_1 \cap S_2 \cap \dots \cap S_{k-1})P(S_k \vert S_1 \cap S_2 \cap \dots \cap S_{k-1}) \nonumber \\
         &= P(S_1 \cap S_2 \cap \dots \cap S_{k-2})P(S_{k-1} \vert S_1 \cap S_2 \cap \dots \cap S_{k-2})P(S_k \vert S_1 \cap S_2 \cap \dots \cap S_{k-1}) \nonumber \\
         &= P(S_1)P(S_2 \vert S_1)P(S_3 \vert S_2 \cap S_1) \dots P(S_{k} \vert S_1 \cap S_2 \cap \dots \cap S_{k-1})
 \end{align}
+$$
 
 <br/>
 
