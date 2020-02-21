@@ -17,6 +17,13 @@ If they are independent, we then find the probability of getting P(A) by multipl
 
 Imagine $$A \cap B$$ contains one element and probability $$P(A)=\frac{1}{N}$$ and $$P(B)=\frac{1}{M}$$, where N and M are the number of elements in A and B, respectively. The total number of possible combinations between all elements in A and B is the number of pairs we can make from them. Since each element of A can be paired to the entire space in B(ie. one element in A can be paired with all of B), the total number of pairs is $$N \cdot M$$. Getting this single pair that satisfies being the intersection between $$A$$ and $$B$$, $$A \cap B$$, is then $$P(A \cap B) = \frac{1}{N \cdot M}$$, which is the same as expressing this as $$P(A \cap B) = \frac{1}{N \cdot M} = \frac{1}{N} \cdot \frac{1}{M} = P(A)P(B)$$. 
 
+Similarly, let's generalize this to have $$A \cap B$$ contain n elements in A and m elements in B. Now $$P(A)=\frac{n}{N}$$ and $$P(B)=\frac{m}{M}$$. Similarly, the total number of pairs is $$N \cdot M$$, while the number of pairs that intersect as $$n \cdot m$$, since for each element of a we can pair to an element in b. Finally, we get the same relationship that $$P(A \cap B) = \frac{n \cdot m}{N \cdot M} = \frac{n}{N} \cdot \frac{m}{M} = P(A)P(B)$$.
+
+A different perspective to take is that we are creating an event space $$\mathcal{F}$$ that is composed of pairs between elements $$A$$ and $$B$$. That event space has a probability space $$P(A \cup B)$$ and $$P(A \cap B)$$ is just a subset as follows: $$P((A \cap B) \in (A \cup B))$$.
+
+**Example 1:** <br>
+Let's say the event space for A had two elements: one with even elements and the other with odd. The second event space B also had two elements, but these would one would have sample elements greater than 3 and the other would have equal to or less than 3. If we wanted the probaility of getting an even number that is ALSO greater than 3, then we have $$P(A=\text{even} \cap B=\text{greater than 3})$$. In the set intersection $$(A=\text{even} \cap B=\text{greater than 3})$$, we have $$\{2,4,6\}$$ and $$\{4,5,6\}$$ which satisfy the condition. Let these probabilities be $$P(A=\{2,4,6\})=0.5$$ and $$P(B=\{4,5,6\})=0.5$$. The probability of getting both requires us to ask: does it matter if we get $$P(A=\{2,4,6\})$$ before $$P(B=\{4,5,6\})=0.5$$, or vice versa? If the answer is no, we say these two are 
+
 
 <br/>
 
