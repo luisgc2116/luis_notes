@@ -10,7 +10,7 @@ Let's expand our intuition for probability. To do so, we have to extend our unde
 Currently, we know that probabilities under a Probability Triplet $$(\Omega, \mathcal{F}, P)$$ maps elements of an event space $$\mathcal{F}$$ to probabilities P, which are real numbers in $$\mathbb{R}$$. In order to ease the notation to be more readable, let's say the probability of events $$A \in \mathcal{F_A}$$ to be $$P(A)$$.
 
 
-{% marginfigure 'mf-id-1' 'fig1_cond.png' 'F.J. Cole, “The History of Albrecht Dürer’s Rhinoceros in Zoological Literature,” *Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice* (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte’s *Visual Explanations*.' %}.
+{% marginfigure 'mf-id-1' 'published_notes/fundamental/intro_cond_prob/fig1_cond.png' 'F.J. Cole, “The History of Albrecht Dürer’s Rhinoceros in Zoological Literature,” *Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice* (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte’s *Visual Explanations*.' %}.
 
 Now, let's visualize the event space A as a circle, as in Figure 2a. Any element in this circle is part of the set A that has a probability $$P(A)$$. Furthermore, let's say we have a second event space where $$B \in \mathcal{F_B}$$ with elements in B also having probabilities $$P(B)$$. If we assume these circles intersected as in Figure 1b, then the set intersection between the sets $$A $$ and $$ B$$ is $$A \cap B$$. 
 
