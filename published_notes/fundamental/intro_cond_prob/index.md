@@ -13,7 +13,9 @@ Currently, we know that probabilities under a Probability Triplet $$(\Omega, \ma
 
 {% include marginfigure.html id="beta1" url="assets/images/preliminary/fig1.png" description="descr " %}
 
-{% include maincolumn_img.html src='assets/img/mi-graph.png' %}
+
+
+{% include marginfigure.html id="beta2" url="published_notes/fundamental/intro_cond_prob/fig1.png" description="descr " %}
 
 Now, let's visualize the event space A as a circle, as in Figure 2a. Any element in this circle is part of the set A that has a probability $$P(A)$$. Furthermore, let's say we have a second event space where $$B \in \mathcal{F_B}$$ with elements in B also having probabilities $$P(B)$$. If we assume these circles intersected as in Figure 1b, then the set intersection between the sets $$A $$ and $$ B$$ is $$A \cap B$$. 
 
