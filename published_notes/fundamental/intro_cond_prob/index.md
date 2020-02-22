@@ -4,10 +4,11 @@ title: Introduction to Conditional Probability
 date:   2020-02-21 21:46:04
 categories: jekyll css
 ---
+{% include marginfigure.html id="image_1" url="published_notes/fundamental/intro_cond_prob/fig1_cond.png" description="Figure 1: Here, the elements of a sample space get mapped onto an event space (ie. a collection of subsets from the sample space). These event elements get uniquely mapped onto a probability space." %}
 
 Let's expand our intuition for probability. To do so, we have to extend our understanding of sets as well. Recall from the previous entry on Probability Spaces that the glue that held the intuition and mathematical explanations was the concept of sets. 
 
-Currently, we know that probabilities under a Probability Triplet $$(\Omega, \mathcal{F}, P)$$ maps elements of an event space $$\mathcal{F}$$ to probabilities P, which are real numbers in $$\mathbb{R}$$. In order to ease the notation to be more readable, let's say the probability of events $$A \in \mathcal{F_A}$$ to be $$P(A)$$. {% include marginfigure.html id="image_1" url="published_notes/fundamental/intro_cond_prob/fig1_cond.png" description="Figure 1: Here, the elements of a sample space get mapped onto an event space (ie. a collection of subsets from the sample space). These event elements get uniquely mapped onto a probability space." %}
+Currently, we know that probabilities under a Probability Triplet $$(\Omega, \mathcal{F}, P)$$ maps elements of an event space $$\mathcal{F}$$ to probabilities P, which are real numbers in $$\mathbb{R}$$. In order to ease the notation to be more readable, let's say the probability of events $$A \in \mathcal{F_A}$$ to be $$P(A)$$. 
 
 Now, let's visualize the event space A as a circle, as in Figure 2. Any element in this circle is part of the set A that has a probability $$P(A)$$. Furthermore, let's say we have a second event space where $$B \in \mathcal{F_B}$$ with elements in B also having probabilities $$P(B)$$. If we assume these circles intersected as in Figure 2, then the set intersection between the sets $$A $$ and $$ B$$ is $$A \cap B$$. {% include marginfigure.html id="image_2" url="published_notes/fundamental/intro_cond_prob/fig2_cond.png" description="Figure 2: The intersection of two sets can be visualized as the space at which they over overlap, show in 2a. The union takes in account the rest of the elements in the other circles in addition to the intersection region." %} 
 
