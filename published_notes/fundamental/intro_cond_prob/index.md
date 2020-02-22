@@ -9,6 +9,9 @@ Let's expand our intuition for probability. To do so, we have to extend our unde
 
 Currently, we know that probabilities under a Probability Triplet $$(\Omega, \mathcal{F}, P)$$ maps elements of an event space $$\mathcal{F}$$ to probabilities P, which are real numbers in $$\mathbb{R}$$. In order to ease the notation to be more readable, let's say the probability of events $$A \in \mathcal{F_A}$$ to be $$P(A)$$.
 
+
+{% marginfigure 'fig1' './fig1_cond.png' 'F.J. Cole, “The History of Albrecht Dürer’s Rhinoceros in Zoological Literature,” *Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice* (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte’s *Visual Explanations*.' %}.
+
 Now, let's visualize the event space A as a circle, as in Figure 2a. Any element in this circle is part of the set A that has a probability $$P(A)$$. Furthermore, let's say we have a second event space where $$B \in \mathcal{F_B}$$ with elements in B also having probabilities $$P(B)$$. If we assume these circles intersected as in Figure 1b, then the set intersection between the sets $$A $$ and $$ B$$ is $$A \cap B$$. 
 
 The probability of this intersection then just **seems** to be $$P(A \cap B)$$. But notice how this is ambiguous - the elements in this intersection can have probabilities mapped with respect to $$P(A)$$ and $$P(B)$$. So what are we trying to find with $$P(A \cap B)$$ - the probability of the intersection $$A \cap B$$ with respect to the probability mass function of $$P(A)$$ or $$P(B)$$? Both. We want to know the probability of getting this intersection with respect to $$P(A)$$ and $$P(B)$$. The probability of getting both requires us to ask: does it matter if we get $$P(A)$$ before $$P(B)$$, or vice versa? If the answer is no, we say these two probability spaces are **independent**. 
