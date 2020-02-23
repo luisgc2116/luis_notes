@@ -9,13 +9,13 @@
 
 4. [Introcution to Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
 
-5. [Introcution to Entropy]
+5. [Introcution to Entropy and Information](published_notes/fundamental/intro_entropy/): Introduction to the concepts of entropy and information that began with Shannon's Information Theory.
 
 
 
 ## Concepts to Probability
 
-1. [Entropy, Cross-Entropy, and KL-Divergence]
+1. [Entropy, Cross-Entropy, and KL-Divergence]: 
 
 2. [Bayesian networks](representation/directed/): Definitions. Representations via directed graphs. Independencies in directed models.
 
