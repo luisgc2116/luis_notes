@@ -57,4 +57,31 @@ $$
 \end{align}
 $$
 
+Furthermore, let's say we wanted to find the average Information for every state. In other words, we want the average number of minimum steps to get to each state. This average Information (or number of steps) for all states is named **Entropy**. If we denote entropy as $$\mathbf{H}$$, and rephrase $$\text{total # of steps}_{\text{state}}$$ as $$b(\text{state})$$ then we have that the average, or expected value, is 
+$$ 
+\begin{align}
+    \mathbf{E}[g(X)] &= \sum_x g(x) f_X(x)
+\end{align}
+$$
+
+$$
+\begin{align}
+    \mathbf{E}[\text{total # of steps}] &= \sum_{x \in \text{states}} \text{total # of steps} \cdot P(x)\\
+    \mathbf{E}[b(X)] &= \sum_{x \in \text{states}} b(x) P(x) \\ 
+                     &= \sum_{x \in \text{states}} I(x) P(x) \\
+                     &= \sum_{x \in \text{states}} \log_2{\frac{1}{P(x)}} P(x)\\
+                     &= -\sum_{x \in \text{states}} \log_2{P(x)} \cdot P(x) \\
+                     &\equiv \mathbf{H}
+\end{align}
+$$
+
+$$
+\begin{align}
+    \mathbf{H} &= -\sum_{x \in \text{states}} P(x) \log_2{P(x)} 
+\end{align}
+$$
+
+
+**Entropy** is a measure of uncertainty. It is the average, or expected value, of the minimum number of steps to reduce the state space by half for all states. It is therefore a measure of information, where . For instance, a system with a large number of states that contain low probabilities are able to provide more information if a few of those states contained high probability.
+
 |[Index](../../../) |
