@@ -33,23 +33,23 @@ What we would like to do is find a way to compare these two distributions in ord
 
 $$
 \begin{equation}
-    \mathbf{H}(P||Q) = \sum_{i \in \text{states}} I(Q_i) \cdot P_i
+    \mathbf{H}(P \vert \vert Q) = \sum_{i \in \text{states}} I(Q_i) \cdot P_i
 \end{equation}
 $$
 
-The entropy in $$\mathbf{H}(P)$$ is at it's lowest since our state probability vectors have maximum certainty, and so if we found the entropy difference between the predicted state probability vectors $$\mathbf{H}(Q||P)$$ (ie. the cross entropy of Q *with respect to* P) and $$\mathbf{H}(P)$$ as
+The entropy in $$\mathbf{H}(P)$$ is at it's lowest since our state probability vectors have maximum certainty, and so if we found the entropy difference between the predicted state probability vectors $$\mathbf{H}(Q \vert \vert P)$$ (ie. the cross entropy of Q *with respect to* P) and $$\mathbf{H}(P)$$ as
 
 $$
 \begin{equation}
-    \mathbf{KL}(P||Q) = \mathbf{H}(P||Q) - \mathbf{H}(P)
+    \mathbf{KL}(P \vert \vert Q) = \mathbf{H}(P \vert \vert Q) - \mathbf{H}(P)
 \end{equation}
 $$
 
 The given name for this entropy expression is the Kullback Leibler Divergence, $$KL$$, and comes from the names of the mathematicians who pioneered this idea.
 
 A few properties of KL are the following:
-1. $$\mathbf{H}(P||Q) - \mathbf{H}(P) \geq 0 $$. This is because $$\mathbf{H}(P)$$ is proposed as the smallest amount of entropy of that system assuming P to be the ground truth.
-2. $$\mathbf{KL}(P||Q) \neq \mathbf{KL}(Q||P)$$. This becomes mathematically clearer when written as $$\sum_{i \in \text{states}} I(Q_i) \cdot P_i \neq \sum_{i \in \text{states}} I(P_i) \cdot Q_i$$ since $$I(P_i) \neq I(Q_i)$$. Conceptually, the information from the predicted values Q relative to the ground truth vectors P is not the same as the information from vectors P (which contains the most minimal entropy to begin with) relative to the predicted vectors Q; the latter almost makes no sense.
+1. $$\mathbf{H}(P \vert \vert Q) - \mathbf{H}(P) \geq 0 $$. This is because $$\mathbf{H}(P)$$ is proposed as the smallest amount of entropy of that system assuming P to be the ground truth.
+2. $$\mathbf{KL}(P \vert \vert Q) \neq \mathbf{KL}(Q \vert \vert P)$$. This becomes mathematically clearer when written as $$\sum_{i \in \text{states}} I(Q_i) \cdot P_i \neq \sum_{i \in \text{states}} I(P_i) \cdot Q_i$$ since $$I(P_i) \neq I(Q_i)$$. Conceptually, the information from the predicted values Q relative to the ground truth vectors P is not the same as the information from vectors P (which contains the most minimal entropy to begin with) relative to the predicted vectors Q; the latter almost makes no sense.
 
 Notes: <br>
 1. Vectors labeled as ground truth, have a single element with a 1. Each element signifies probability, and so the reduced sum equals 1. These single non-zero element vectors are colloquially named "One-Hot-Encoded" vectors.
