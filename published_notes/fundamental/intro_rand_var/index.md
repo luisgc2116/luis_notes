@@ -45,5 +45,29 @@ $$
 \end{align} 
 $$
 
+*One way* perspective we can take is that values act like *weights* to the probabilities, that scale them to a resulting value between the minimum and maximum values. The resulting value is then a predicted value, or weighted value. Notice how this value is in the min/max range of the values, but doesn't actually have to be within the set of values $$x \in Values(X)$$. This is in part because this is a prediction, or an expectation of a value, which why it is named an **Expected Value**. 
+
+However, another perspective is that the probabilities themselves are the weights that scale the values to sum between the min/max of the values. Mathematically, this perspective is the one taken, since we can say the weights are normalized(ie. add to 1).
+
+Finally, the expected value then,
+
+$$
+\begin{equation}
+    \mathbb{E}[X] = \sum_{x \in Val(X)} xP(X=x)
+\end{equation}
+$$
+
+### Expanding the Intuition of Expected Values
+
+$$
+\begin{equation}
+    \mathbb{E}_{P(X)}[g(X)] = \sum_{x \in Val(X)} g(X=x)P(X=x)
+\end{equation}
+$$
+
+**Note:** <br>
+You may often see a random variable defined as the mapping between the sample space and $$X: \Omega \rightarrow \mathbb{R}$$, $$P(\Omega=\omega) := P(\{ \omega: X(\omega)=k \})$$. However, as mentioned in the first entry, this is just the notation often used to describe the same thing. This is because the sample space is defined to have the same elements of the event space, and so the collection of sets with the elements of the sample space is denoted with the same notation as the sample space. From now, when we encounter this, we'll call this the **state space**, to indicate the event space.
+<br><br>
+
 
 |[Index](../../../) |
