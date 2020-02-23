@@ -7,15 +7,15 @@
 
 3. [Introduction to Random Variables](published_notes/fundamental/intro_rand_var/): (*Under Construction*) Understanding random variables and expectation values.
 
-4. [Introcution to Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
+4. [Introcution to Bayesian Probability](preliminaries/intro_bayesian_prob/): (*Under Construction*) Introduction to Bayesian and Frequentist Statistics.
 
-5. [Introcution to Entropy and Information](published_notes/fundamental/intro_entropy/): Introduction to the concepts of entropy and information that began with Shannon's Information Theory.
+5. [Introcution to Entropy and Information](published_notes/fundamental/intro_entropy/): (*Under Construction*) Introduction to the concepts of entropy and information that began with Shannon's Information Theory.
 
 
 
 ## Concepts to Probability
 
-1. [Entropy, Cross-Entropy, and KL-Divergence](published_notes/concepts_to_prob/kl_divergence/):  
+1. [Entropy, Cross-Entropy, and KL-Divergence](published_notes/concepts_to_prob/kl_divergence/): (*Under Construction*) Expanding the concepts of information and entropy toward future mathematical applications.
 
 2. [Bayesian networks](representation/directed/): Definitions. Representations via directed graphs. Independencies in directed models.
 
@@ -24,5 +24,5 @@
 
 ## Applicatons to Probability: Machine Learning Pt1
 
-1. [Variational Autoencoder](published_notes/applications_pt_1/vae)
+1. [Variational Autoencoder](published_notes/applications_pt_1/vae): (*Under Construction*) The Variational Autoencoder is a powerful generative model with deep roots in all the previous concepts of probability we have gone over.
 
