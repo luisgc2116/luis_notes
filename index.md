@@ -1,7 +1,7 @@
 
 ## Foundations to Probability
 
-1. [Probability Spaces](published_notes/fundamental/intro_prob_spaces/): Introduction to representing something in a probability triplet.
+1. [Introduction to Probability Spaces](published_notes/fundamental/intro_prob_spaces/): Introduction to representing something in a probability triplet.
 
 2. [Introduction to Independence and Conditional Probability](published_notes/fundamental/intro_cond_prob/index.md): An introduction to intuitively understand conditional probabilities, which are instrumental in the understanding of Bayes' Theorem.
 
