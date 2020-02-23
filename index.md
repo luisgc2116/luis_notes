@@ -3,9 +3,11 @@
 
 1. [Probability Spaces](published_notes/fundamental/intro_prob_spaces/): Introduction to representing something in a probability triplet.
 
-2. [Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
+2. [Introduction to Independence and Conditional Probability](published_notes/fundamental/intro_cond_prob/index.md): An introduction to intuitively understand conditional probabilities, which are instrumental in the understanding of Bayes' Theorem.
 
-3. [Review of probability theory](preliminaries/probabilityreview): Probability distributions. Conditional probability. Random variables (*under construction*).
+3. [Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
+
+4. [Review of probability theory](preliminaries/probabilityreview): Probability distributions. Conditional probability. Random variables (*under construction*).
 
 ## Representation
 
