@@ -24,5 +24,5 @@
 
 ## Applicatons to Probability: Machine Learning Pt1
 
-1. [Variational Autoencoder]()
+1. [Variational Autoencoder](published_notes/applications_pt_1/vae)
 
