@@ -5,42 +5,24 @@
 
 2. [Introduction to Independence and Conditional Probability](published_notes/fundamental/intro_cond_prob/index.md): An introduction to intuitively understand conditional probabilities, which are instrumental in the understanding of Bayes' Theorem.
 
-3. [Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
+3. [Introduction to Random Variables](published_notes/fundamental/intro_rand_var/): (*Under Construction*) Understanding random variables and expectation values.
 
-4. [Review of probability theory](preliminaries/probabilityreview): Probability distributions. Conditional probability. Random variables (*under construction*).
+4. [Introcution to Bayesian Probability](preliminaries/intro_bayesian_prob/): Introduction to Bayesian and Frequentist Statistics.
 
-## Representation
+5. [Introcution to Entropy]
 
-1. [Bayesian networks](representation/directed/): Definitions. Representations via directed graphs. Independencies in directed models.
 
-2. [Markov random fields](representation/undirected/): Undirected vs directed models. Independencies in undirected models. Conditional random fields.
 
-## Inference
+## Concepts to Probability
 
-1. [Variable elimination](inference/ve/) The inference problem. Variable elimination. Complexity of inference.
+1. [Entropy, Cross-Entropy, and KL-Divergence]
 
-2. [Belief propagation](inference/jt/): The junction tree algorithm. Exact inference in arbitrary graphs. Loopy Belief Propagation.
+2. [Bayesian networks](representation/directed/): Definitions. Representations via directed graphs. Independencies in directed models.
 
-3. [MAP inference](inference/map/): Max-sum message passing. Graphcuts. Linear programming relaxations. Dual decomposition.
+3. [Markov random fields](representation/undirected/): Undirected vs directed models. Independencies in undirected models. Conditional random fields.
 
-4. [Sampling-based inference](inference/sampling/): Monte-Carlo sampling. Forward Sampling. Rejection Sampling. Importance sampling. Markov Chain Monte-Carlo. Applications in inference.
 
-5. [Variational inference](inference/variational/): Variational lower bounds. Mean Field. Marginal polytope and its relaxations.
+## Applicatons to Probability: Machine Learning Pt1
 
-## Learning
+1. [Variational Autoencoder]()
 
-1. [Learning in directed models](learning/directed/): Maximum likelihood estimation. Learning theory basics. Maximum likelihood estimators for Bayesian networks.
-
-2. [Learning in undirected models](learning/undirected/): Exponential families. Maximum likelihood estimation with gradient descent. Learning in CRFs
-
-3. [Learning in latent variable models](learning/latent/): Latent variable models. Gaussian mixture models. Expectation maximization.
-
-4. [Bayesian learning](learning/bayesian/): Bayesian paradigm. Conjugate priors. Examples (*under construction*).
-
-5. [Structure learning](learning/structure/): Chow-Liu algorithm. Akaike information criterion. Bayesian information criterion. Bayesian structure learning (*under construction*).
-
-## Bringing it all together
-
-1. [The variational autoencoder](extras/vae): Deep generative models. The reparametrization trick. Learning latent visual representations.
-
-2. [List of further readings](extras/readings): Structured support vector machines. Bayesian non-parametrics.
