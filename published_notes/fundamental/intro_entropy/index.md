@@ -33,11 +33,13 @@ $$
     \text{total # of steps}_{\text{target_state}} &= \log_2{(N_\text{states})}
 \end{align}
 $$
+
 $$
 \begin{align}
     2^{\text{total # of steps}_{\text{target_state}}} &= N_\text{states} 
 \end{align}
 $$
+
 $$
 \begin{align}
     \text{total # of steps}_{\text{target_state}} &= \log_2{(N_\text{states})}
@@ -54,7 +56,7 @@ $$
         &= -\log_2{\bigg(P_{\text{target_state}}\bigg)} 
 \end{align}
 $$
-<br>
+
 
 We can see that the higher number of total steps is related to a larger number of states. We also know that a higher number of states tends to leads toward more uncertainty; this is because probabilities among those states must add to a total probability of 1, and therefore each state can get smaller fractions of probability. 
 
