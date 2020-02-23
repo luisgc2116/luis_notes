@@ -15,7 +15,7 @@
 
 ## Concepts to Probability
 
-1. [Entropy, Cross-Entropy, and KL-Divergence](published_notes/concepts_to_prob/kl_divergence/): 
+1. [Entropy, Cross-Entropy, and KL-Divergence](published_notes/concepts_to_prob/kl_divergence/):  
 
 2. [Bayesian networks](representation/directed/): Definitions. Representations via directed graphs. Independencies in directed models.
 
