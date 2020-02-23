@@ -5,7 +5,7 @@ date: 2020-02-19 21:46:04
 categories: jekyll css
 ---
 
-Let's start off assuming we have a decoder; a reconstruction model in the form $P(x|z)$. We then have,
+Let's start off assuming we have a decoder; a reconstruction model in the form $$P(x|z)$$. We then have,
 
 $$
 \begin{equation}
@@ -68,7 +68,7 @@ $$
 \end{align}
 $$
 
-Here, $$\Sigma$ is diagonal because we are assuming Mean Field Inference, where $Q(z|x) = \prod_i Q(z_i|x)$
+Here, $$\Sigma$ is diagonal because we are assuming Mean Field Inference, where $$Q(z|x) = \prod_i Q(z_i|x)$$
 
 $$
 \begin{align}
