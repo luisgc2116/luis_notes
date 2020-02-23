@@ -34,17 +34,6 @@ $$
 \end{align}
 $$
 
-$$
-\begin{align}
-    2^{\text{total # of steps}_{\text{target_state}}} &= N_\text{states} 
-\end{align}
-$$
-
-$$
-\begin{align}
-    \text{total # of steps}_{\text{target_state}} &= \log_2{(N_\text{states})}
-\end{align}
-$$
 
 
 Often, we don't have $$N_\text{states}$$, and instead have the probabilities for each state. In order to find the relationship above in terms of the probability of each state rather than the set of states, we must try to related the two. We can do this by assuming that each state is unique and equally likely. By doing so we can denote that the probability of a target state as the number of target states over the total number of states, or $$P_{\text{target_state}} = \frac{1}{N_\text{states} }$$. We can use this relationship on the $$\text{total # of steps}$$ as follows$$^2$$,
