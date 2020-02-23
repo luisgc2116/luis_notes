@@ -84,4 +84,12 @@ $$
 
 **Entropy** is a measure of uncertainty. It is the average, or expected value, of the minimum number of steps to reduce the state space by half for all states. It is therefore a measure of information, where . For instance, a system with a large number of states that contain low probabilities are able to provide more information if a few of those states contained high probability.
 
+Note: 
+1. The binary search algorithm assumes an ordered list, or a list of items that contain information in their positions in order for the pivots to effecively reduce the possible elements by half each iteration.
+2. What about when we don't assume equal probabilities for each state, can we still use $$P_{\text{target_state}} = \frac{1}{N_\text{states} }$$?. Yes, but we would relate probability and $$N_\text{states}$$ differently. $$N_\text{states}$$ would be the number of states which *includes* the repeated states based on how probable each state is; ie. this is not a set of unique states any longer. The numerator was 1 before because that's the number of times the state appears in the set. The relationship is therefore, $$P_{\text{target_state}} = \frac{\text{# times state appears}}{N_\text{states}}$$. The main idea is that sum of the probabilities of each state must equal 1, $$\sum_\text{states} P_{\text{target_state}}=1$$. But again, we often don't have $$N_\text{states}$$, and instead have the probabilities for each state so this is often ignored.
+
+
+[1] Shannon. A Mathematical Theory of Communication. [PDF](http://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf)<br>
+[2] Aftab, et al. Information Theory: Information Theory and the Digital Age. MIT. [PDF](http://web.mit.edu/6.933/www/Fall2001/Shannon2.pdf)<br>
+
 |[Index](../../../) |
