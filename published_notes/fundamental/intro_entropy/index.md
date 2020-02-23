@@ -5,12 +5,12 @@ date:   2020-02-19 21:46:04
 categories: jekyll css
 ---
 
-Let's develop our definition for entropy through each layer of concepts. But let's start with a very brief high level description.
+Let's build our intuition of *entropy* by layering one concept at a time. Let's start with the first concept:
+- **Entropy** is a measure of uncertainty. 
 
+In order to understand how entropy is related to uncertainty, we must first recall what states are. States are the possible outcomes of a system; they are the elements of an event(or outcome) space $$\mathcal{F}$$. *Confusingly*, states are often written as $$\omega \in \Omega$$, however, $$\omega$$ is technically the sample space discussed in [Introduction to Probability Spaces]. Since the event space is a collection of subsets from the sample space, you can think of the event space as being built in such a way where the event space has sets of length one, where that element are the unique elements in the sample space, so $$\omega \in \mathcal{F}$$. This can be a very confusing notation, however, it's just assumed that when you see *states* and $$\omega \in \Omega$$, these state belong to an *event space* that maps to a *probability space*, where the total sum probabilities for all the states in a system is 1. 
 
-**Entropy** is a measure of uncertainty. 
-
-In order to understand how entropy is related to uncertainty, we must first understand what states are and how they related to entropy. States are the possible outcomes of a system, where the total probability of a system is 1. In regards to how uncertainty and states are related, a system with a higher number of states tends to have more uncertainty since each state must be a fraction of 1, and therefore states have less individual probability.
+In regards to how uncertainty and states are related, a system with a higher number of states tends to have more uncertainty since each state must be a fraction of 1, and therefore states have less individual probability. 
 
 Since entropy is related to the number of states in a system, we can see if we can measure entropy based on the number of states. Let's start with a system that has N states, all with equal probability. We wish to choose a random element from the set of states (ie. sample the state distribution) and use a method to find this state in the state space using the least number of steps. We can choose a naive method to go element by element, but that is incredibly inefficient since it takes N steps. We can instead use the idea of binary search, where we iteratively group the current state in half. If the target state is in one group, you discard the other group and reduce the number of available states by half at each step$$^1$$, $$\frac{N_\text{states}}{2}$$; this approach of dividing the state space by half leads to the most efficient method. After a number of steps, we expect 
 
@@ -33,7 +33,17 @@ $$
     \text{total # of steps}_{\text{target_state}} &= \log_2{(N_\text{states})}
 \end{align}
 $$
-<br><br>
+$$
+\begin{align}
+    2^{\text{total # of steps}_{\text{target_state}}} &= N_\text{states} 
+\end{align}
+$$
+$$
+\begin{align}
+    \text{total # of steps}_{\text{target_state}} &= \log_2{(N_\text{states})}
+\end{align}
+$$
+
 
 Often, we don't have $$N_\text{states}$$, and instead have the probabilities for each state. In order to find the relationship above in terms of the probability of each state rather than the set of states, we must try to related the two. We can do this by assuming that each state is unique and equally likely. By doing so we can denote that the probability of a target state as the number of target states over the total number of states, or $$P_{\text{target_state}} = \frac{1}{N_\text{states} }$$. We can use this relationship on the $$\text{total # of steps}$$ as follows$$^2$$,
 $$
