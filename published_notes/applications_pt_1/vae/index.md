@@ -29,7 +29,7 @@ $$
 \end{equation}
 $$
 
-What we would like to do is find a way to compare these two distributions in order to use learning (ie. gradient descent or otherwise) to update our model to output vectors closer to P. Notice $$\mathbf{H}(Q)$$ has $$Q_i$$, which is the predicted probability of the state i. This is not favorable since we want to compare the information of the prediction, $$I(Q_i)$$, relative to the ground-truth probability vectors. The entropy of predictions Q *with respect to* P is given the named **Cross-Entropy** and written as
+What we would like to do is find a way to compare these two distributions in order to use learning (ie. gradient descent or otherwise) to update our model to output vectors closer to P. Notice $$\mathbf{H}(Q)$$ has $$Q_i$$, which is the predicted probability of the state i. This is not favorable since we want to compare the information of the prediction, $$I(Q_i)$$, relative to the ground-truth probability vectors. The entropy of predictions Q *with respect to* P is given the named **Cross\-Entropy** and written as
 
 $$
 \begin{equation}
