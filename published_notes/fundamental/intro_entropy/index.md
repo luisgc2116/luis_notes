@@ -20,6 +20,19 @@ $$
 \end{align}
 $$
 
-<br/>
+
+**Ex1:**
+For example, suppose you have a state space composed of the alphabet [A-Z]. If you sample a letter from this state-space, and try to find this sampled letter through a series of yes/no questions using binary search, we can start by asking: is the letter between A-M (ie. the first half of the alphabet)? No, then it must be in N-Z. You can reduce your state space to N-Z and ask again. Is the letter in N-T? Yes, so you can reduce your state space to N-T, and so on. 
+
+
+Therefore, **Entropy** is a measure of uncertainty. It *relates* to the minimum number of steps to reduce the state space by half until we reach a target state. Note that $$\text{total # of steps}$$ refers to the total number of steps needed to find the target state.
+
+$$
+\begin{align}
+    2^{\text{total # of steps}_{\text{target_state}}} &= N_\text{states} \\
+    \text{total # of steps}_{\text{target_state}} &= \log_2{(N_\text{states})}
+\end{align}
+$$
+<br><br>
 
 |[Index](../../../) |
