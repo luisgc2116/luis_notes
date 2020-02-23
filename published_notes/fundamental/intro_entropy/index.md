@@ -46,6 +46,7 @@ $$
 
 
 Often, we don't have $$N_\text{states}$$, and instead have the probabilities for each state. In order to find the relationship above in terms of the probability of each state rather than the set of states, we must try to related the two. We can do this by assuming that each state is unique and equally likely. By doing so we can denote that the probability of a target state as the number of target states over the total number of states, or $$P_{\text{target_state}} = \frac{1}{N_\text{states} }$$. We can use this relationship on the $$\text{total # of steps}$$ as follows$$^2$$,
+
 $$
 \begin{align}
     \text{total # of steps}_{\text{target_state}} &= \log_2{(N_\text{states})} \\
@@ -60,6 +61,7 @@ We can see that the higher number of total steps is related to a larger number o
 Furthermore, a larger number of states can be associated with the **information** of a system; more clearly, the *amount of information we can learn* from a system is greater as the number of states increases. *Information* is often mischaracterized as being a limitless quantity, but in reality if we think of information in a system as something which has a limited amount, then we can see that - the possible amount of information that could be learned from a system is higher when the states in a system are more uncertain (ie. have lower probabilities). Another way to say the same thing is: if we have a system with low probabilities for its states, we have . Conversely, if we have a fully deterministic system where one state has a probability of 1, then we have learn no new information about the system  
 
 For example, a system of one state is completely deterministic, and due to this, we have exhausted the available information we can get from this system and so it gives us no new information anymore. This leads to the inverse relationship between Information and Probability - the more deterministic a system is (ie. states with larger probability values), the less information we are able to learn from it. Lastly, information has a unit assigned to it, named - a *bit*.
+
 $$
 \begin{align}
     I_\text{target_state} &= \log_2{\bigg(\frac{1}{P_{\text{target_state}}}\bigg)} \\
@@ -68,6 +70,7 @@ $$
 $$
 
 Furthermore, let's say we wanted to find the average Information for every state. In other words, we want the average number of minimum steps to get to each state. This average Information (or number of steps) for all states is named **Entropy**. If we denote entropy as $$\mathbf{H}$$, and rephrase $$\text{total # of steps}_{\text{state}}$$ as $$b(\text{state})$$ then we have that the average, or expected value, is 
+
 $$ 
 \begin{align}
     \mathbf{E}[g(X)] &= \sum_x g(x) f_X(x)
