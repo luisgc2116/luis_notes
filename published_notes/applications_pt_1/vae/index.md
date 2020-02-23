@@ -52,7 +52,7 @@ A few properties of KL are the following:
 2. $$\mathbf{KL}(P \vert \vert Q) \neq \mathbf{KL}(Q \vert \vert P)$$. This becomes mathematically clearer when written as $$\sum_{i \in \text{states}} I(Q_i) \cdot P_i \neq \sum_{i \in \text{states}} I(P_i) \cdot Q_i$$ since $$I(P_i) \neq I(Q_i)$$. Conceptually, the information from the predicted values Q relative to the ground truth vectors P is not the same as the information from vectors P (which contains the most minimal entropy to begin with) relative to the predicted vectors Q; the latter almost makes no sense.
 
 Notes: <br>
-1. Vectors labeled as ground truth, have a single element with a 1. Each element signifies probability, and so the reduced sum equals 1. These single non-zero element vectors are colloquially named "One-Hot-Encoded" vectors.
+1. Vectors labeled as ground truth, have a single element with a 1. Each element signifies probability, and so the reduced sum equals 1. These single non-zero element vectors are colloquially named "One\-Hot\-Encoded" vectors.
 
 
 
