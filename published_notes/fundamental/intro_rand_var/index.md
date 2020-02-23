@@ -5,6 +5,8 @@ date:   2020-02-21 21:46:04
 categories: jekyll css
 ---
 
+*Under Construction*
+
 
 A **Random Variable** is a function that maps event spaces to real numbers, so $$X: \mathcal{F} \rightarrow \mathbb{R}$$, where the probability of an event $$s \in \mathcal{F}$$ at some value $$k$$ is defined as $$P(X=k) := P(X(s)=k)$$. 
 
