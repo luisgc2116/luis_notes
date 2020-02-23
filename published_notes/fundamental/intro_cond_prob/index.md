@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction to Conditional Probability  
+title: Introduction to Independence and Conditional Probability   
 date:   2020-02-21 21:46:04
 categories: jekyll css
 ---
