@@ -5,88 +5,57 @@ date: 2020-02-19 21:46:04
 categories: jekyll css
 ---
 
-Let's start off assuming we have a decoder; a reconstruction model in the form $$P(x|z)$$. We then have,
+Let's say we are trying to create a model that distinguishes between cats, dogs, horses, and birds; these are states that form our state space. Furthermore, let's say we have labels for each which creates a "ground-truth" probability distribution for each state. For example, if we have a vector where each element is a state, and the first element represents a bird, then the bird state-probability distribution can be represented as a vector, $$ \[ 1,0,0,0 \] $$. This is named "ground-truth" since one state contains nearly or complete certainty, so predicted distributions are compared to this distribution$$^1$$. If we name the "ground-truth" probability distribution vectors for each state as $$P_i$$, then we can write entropy as
+
+$$
+\begin{align}
+    \mathbf{H}(P) &= \sum_{x \in \text{states}} I(P(x)) \cdot P(x)
+\end{align}
+$$
+
+However, a cleaner notation will help down the line, as so the same equation can be written in the following way
+
+$$
+\begin{align}
+    \mathbf{H}(P) &= \sum_{i \in \text{states}} I(P_i) \cdot P_i
+\end{align}
+$$
+
+Let's add to our example by saying we have an untrained model that attempts to predict the state-probability distributions P. The entropy can be calculated in the same manner,
 
 $$
 \begin{equation}
-    P(x|z) = \frac{P(z|x)P(x)}{P(z)}
+    \mathbf{H}(Q) = \sum_{i \in \text{states}} I(Q_i) \cdot Q_i
 \end{equation}
 $$
 
-$$
-\begin{align}
-    P(z|x) 
-        &= \frac{P(x|z)P(z)}{P(x)} \\
-        &= \frac{P(x|z)P(z)}{\int P(x|z)P(z) dz} 
-\end{align}
-$$
+What we would like to do is find a way to compare these two distributions in order to use learning (ie. gradient descent or otherwise) to update our model to output vectors closer to P. Notice $$\mathbf{H}(Q)$$ has $$Q_i$$, which is the predicted probability of the state i. This is not favorable since we want to compare the information of the prediction, $$I(Q_i)$$, relative to the ground-truth probability vectors. The entropy of predictions Q *with respect to* P is given the named **Cross-Entropy** and written as
 
 $$
-\begin{align}
-    P(z|x) 
-        &= \frac{P(x,z)}{P(x)} \\
-        &= \frac{P(x,z)}{\int P(x,z) dz}
-\end{align}
+\begin{equation}
+    \mathbf{H}(P||Q) = \sum_{i \in \text{states}} I(Q_i) \cdot P_i
+\end{equation}
 $$
 
-For the encoder, $$P(z|x)$$, we already have a problem - the denominator term $$P(x)= \frac{P(x|z)P(z)}{\int P(x|z)P(z) dz}$$ can be intractible due to having to be integrated over every variable of z as $$\int_{d_n} \dots \int_{dz1} P(x|z)P(z) dz1 \dots dz_n$$. We can instead look towards approximating $$P(z|x)$$ using  *variational inference*.
-
-As noted previously, variational inference entails approximating $$P(z|x)$$ with a family of functions $$Q(z|x)$$. To measure the similarity between $$P(z|x)$$ and $$Q(z|x)$$, we can use the Kullback-Leibler Divergence (KL Divergence) as follows,
+The entropy in $$\mathbf{H}(P)$$ is at it's lowest since our state probability vectors have maximum certainty, and so if we found the entropy difference between the predicted state probability vectors $$\mathbf{H}(Q||P)$$ (ie. the cross entropy of Q *with respect to* P) and $$\mathbf{H}(P)$$ as
 
 $$
-\begin{align}
-    KL \big [ Q(z|x)||P(z|x) \big ] 
-        &= \sum Q(z|x) \frac{P(z|x)}{Q(z|x)} \\
-        &= \sum Q(z|x) \log \frac{\frac{P(x,z)}{P(x)}}{Q(z|x)} \\
-        &= \sum Q(z|x) \log \frac{P(x,z)}{Q(z|x) \log P(x)}   \\
-        &= \sum Q(z|x) \bigg [ \log \frac{P(x,z)}{Q(z|x)} - \log P(x) \bigg ] \\
-        &= \sum Q(z|x) \log \frac{P(x,z)}{Q(z|x)} - \log P(x)
-\end{align}
+\begin{equation}
+    \mathbf{KL}(P||Q) = \mathbf{H}(P||Q) - \mathbf{H}(P)
+\end{equation}
 $$
 
+The given name for this entropy expression is the Kullback Leibler Divergence, $$KL$$, and comes from the names of the mathematicians who pioneered this idea.
 
-Rearraging this equation, we have the following,
+A few properties of KL are the following:
+1. $$\mathbf{H}(P||Q) - \mathbf{H}(P) \geq 0 $$. This is because $$\mathbf{H}(P)$$ is proposed as the smallest amount of entropy of that system assuming P to be the ground truth.
+2. $$\mathbf{KL}(P||Q) \neq \mathbf{KL}(Q||P)$$. This becomes mathematically clearer when written as $$\sum_{i \in \text{states}} I(Q_i) \cdot P_i \neq \sum_{i \in \text{states}} I(P_i) \cdot Q_i$$ since $$I(P_i) \neq I(Q_i)$$. Conceptually, the information from the predicted values Q relative to the ground truth vectors P is not the same as the information from vectors P (which contains the most minimal entropy to begin with) relative to the predicted vectors Q; the latter almost makes no sense.
 
-$$
-\begin{align}
-    \log P(x)  
-        &= \sum Q(z|x) \log \frac{P(x,z)}{Q(z|x)} - KL \big [ Q(z|x)||P(z|x) \big ] \\
-        & = \text{ELBO} - KL \big [ Q(z|x)||P(z|x) \big ]
-\end{align}
-$$
-
-Here, the left side of the equation, $$\log P(x)$$, is constant. On the right side of the equation, changing either one of the terms will cause the other to change as well. Furthermore, $$KL \big [ Q(z|x)||P(z|x) \big ] \geq 0$$, and so maximizing the first term $$\sum Q(z|x) \log \frac{P(x,z)}{Q(z|x)}$$ will cause the second KL Divergence term to minimize close to 0; we wanted to minimize the KL Divergence as close to zero anyway. Hence, we don't have to worry about the second KL Divergence term at all; it's intractable anyway. We call this first term that we actually minimize, the Evidence Lower BOund (ELBO) and can be futher manipulated as follows,
-
-$$
-\begin{align}
-    \text{ELBO}
-        &= \sum Q(z|x) \log \frac{P(x,z)}{Q(z|x)} \\
-        &= \sum Q(z|x) \log \frac{P(x|z)P(z)}{Q(z|x)} \\
-        &= \sum Q(z|x) \log P(x|z) + \sum Q(z|x) \log \frac{P(z)}{Q(z|x)} \\
-        &= \mathbf{E}_{Q(z|x)}[\log P(x|z)] - KL[Q(z|x)||P(z)] \\
-        &= \text{Reconstruction}(x,\hat{x}) - KL[Q(z|x)||P(z) \sim N(\mu, \Sigma) ]
-\end{align}
-$$
-
-Here, $$\Sigma$ is diagonal because we are assuming Mean Field Inference, where $$Q(z|x) = \prod_i Q(z_i|x)$$
-
-$$
-\begin{align}
-    \text{ELBO}
-        &= \sum Q(z|x) \log P(x|z) + \sum Q(z|x) \log \frac{P(z)}{Q(z|x)} \\
-        &= \mathbf{E}_{z \sim Q(z|x)}[\log P(x|z)] - KL[Q(z|x)||P(z)] \\
-        &= \text{Reconstruction}(x,\hat{x}) - KL[Q(z|x)||P(z) \sim N(\mu, \Sigma) ]
-\end{align}
-$$
+Notes: <br>
+1. Vectors labeled as ground truth, have a single element with a 1. Each element signifies probability, and so the reduced sum equals 1. These single non-zero element vectors are colloquially named "One-Hot-Encoded" vectors.
 
 
 
-From the perspective of a model, we want to draw latent variables from a distribution $$P(z)$$, then reconstruct x by way of $$P(x|z)$$. This gives us the decoder model  $$P(x,z)=P(x|z)P(z)$$
-
-
-
-[1] Jaan Altosaar. VAE. [Blog](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/) \\
-[2] Jeremy Jordan. VAE. [Blog](https://www.jeremyjordan.me/variational-autoencoders/)
 
 <br/>
 
