@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Intellectus EX-Machina</title>
+	<meta name="viewpoint" content="width=device-width, initial-scale=1">
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  	<script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  	</script> -->
+	<link rel="blog1" 
+		href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+	  	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	  	crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="blog1.css">
+	<meta charset="utf-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Google Fonts loaded here depending on setting in _data/options.yml true loads font, blank does not-->
+	<link href='//fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
+	<!-- Load up MathJax script if needed ... specify in /_data/options.yml file-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML"></script>
+	<link rel="canonical" href="https://luisgc2116.github.io/luis_notes/">
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+
+<body>
+    <!--- Header and nav template site-wide -->
+	<header>
+	    <nav class="group">
+	    <a href="/luis_notes/" class="header_items">Contents</a>
+	    <a href="https://github.com/luisgc2116/" class="header_items">GitHub</a>
+	    </nav>
+	</header>
+
+	<section>
+		<h2 class="article_headers">Foundations of Probability: Generative Adverserial Netwoks (GANs)</h2>
+		
+		<h3 class="article_headers">I. Introduction:</h3>
+		<div class='format_block'>
+			<div class='format_block_left'>
+				<p class="left_block_text">
+					Main Idea:
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						The general idea of a Generative Adverserial Networks (GANs) can be described as two neural nets being pitted against each other. These two neural nets differ from one another in that one is a generator and the other is a discriminator. In more detail: <br><br>
+					</p>
+					<div class="left_block_text_indent_2">
+						<p class='left_indented_p2'>
+								<i>Two neural networks where a generator neural network G attempts to estimate the data distribution X and generate samples, while a discriminator neural network attempts to estimate whether a sample came from G or the original data X. </i> 
+						</p>
+					</div>
+				</div>
+				<button class="collapsible">More on Background and History:</button>
+					<div class="content">
+					 	<p class="collapsible_text">
+					 		Within the history of Deep Learning, most prominent successes have stemmed from discriminative networks. According to Goodfellow, this is because generative networks have "difficulty of approximating many intractable probabilistic computations that arise in maximum likelihood estimation and related strategies, and due to difficulty of leveraging the benefits of piecewise linear units in the generative context." <br><br>
+
+					 		To mitigate these issue, Goodfellow proposes an "Adversarial Nets Framework", which consists of a "generative model is pitted against an adversary: a discriminative model that learns to determine whether a sample is from the model distribution or the data distribution." <br><br>
+
+					 		This is reminiscent to Game Theory, and so when the two networks reach Nash Equilibrium, the generator G is producing perfect samples from the training data distribution, and the discriminator D would be completely uncertain on whether a generated sample is real or fake (eg. D says a generated sample has a 50% probability of being real or fake.)
+					 	</p>
+					</div>	
+			</div>
+			<div class='format_block_right'>
+				
+			</div> 
+		</div>
+
+		<h3 class="article_headers">II. Theory Pt.1:</h3>
+		<div class='format_block'>
+			<!-- LEFT BLOCK -->
+			<div class='format_block_left'>
+				<p>
+					Discriminator: 
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						Given the output of the Distriminator D, we can utilize a binary cross-entropy loss as usual discriminators would. We can simply the loss function if we knew which 
+						inputs were generated, \( \hat{x} \), and which came from the original data distribution \( x \). 
+					</p>
+
+					<p class="equation_left_indent_1">
+							\begin{equation} 
+								J_D = - [t \log(D(x)) + (1-t) \log(1-D(x))]
+							\end{equation}<br>
+					</p>
+
+					<p class='left_indented_p1'>
+						We can simply the loss function if we knew which inputs were generated, \( \hat{x} \), and which came from the original data distribution \( x \).
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{equation} 
+								J_D = - [\log(D(x)) + \log(1-D(\hat{x}))]
+						\end{equation}
+						<br><br>
+					</p>
+
+					<p class='left_indented_p1'>
+						We can rewrite this back into a format with expectation values as,
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align} 
+							J_D 
+								&= - [t \log(D(x)) + (1-t) \log(1-D(x))] \\
+								&= \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(Z))} \big ]
+						\end{align}<br>
+					</p>
+
+					<p class='left_indented_p1'>
+						We know that since the generated samples come from G(z), then we have, 
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align} 
+							J_D 
+								&= - [t \log(D(x)) + (1-t) \log(1-D(x))] \\
+								&= \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(Z))} \big ] \\
+								&= \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(G(z)))} \big ] 
+						\end{align}<br>
+					</p>
+
+					<p class='left_indented_p1'>
+						Finally, we know that since a discriminator is looking to discriminate between a real and fake image, we are looking to reduce the error; in other words, minimizing the error as.
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align} 
+							J_D 
+								&= \max_{D} \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(G(z)))} \big ] 
+						\end{align}<br>
+					</p> 
+				</div>
+
+				<p>
+					Generator: 
+				</p>
+
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						We know from the description of a GAN that a Generator G is attempting to fool the Discriminator into believing the generated samples are real 
+					</p>
+					
+					<p class="equation_left_indent_1">
+						\begin{equation} 
+							J_G = - J_D
+						\end{equation}<br>
+					</p>
+
+					<p class="left_indented_p1">
+						We can simply the loss function if we knew which inputs were generated, \( \hat{x} \), and which came from the original data distribution \( x \).
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align} 
+							J_G 
+								&= \min_{G} -J_D \\
+								&= \min_{G} \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(G(z)))} \big ] 
+						\end{align}<br>
+					</p>
+				</div>
+
+
+				<p>
+					Discriminator-Generator: 
+				</p>
+				<div class="left_block_text_indent_1">
+						<p class='left_indented_p1'>
+							Together we call this is a mini-max loss function.
+						</p>
+						
+						<p class="equation_left_indent_1">
+							\begin{align} 
+								J_G 
+									&= \min_{D} \max_{G} -J_D \\
+									&= \max_{G} \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(G(z)))} \big ] 
+							\end{align}<br>
+						</p>
+				</div>
+
+			</div>
+
+
+
+			<!-- RIGHT BLOCK -->
+			<div class='format_block_right'>
+				<p class="right_block_titles"> Recall: <br> </p>
+				<p class="right_block_descriptions">Binary Cross-Entropy is defined as the following,
+					\begin{align}
+						H(p,q) 
+							&= H(p) - D(p \vert \vert q) \\
+							&= \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{1}{p(x)}} \big ] + \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{p(x)}{q(x)}} \big ] \\
+							&= - [t \log(q(x)) + (1-t) \log(1-q(x))]
+					\end{align}
+				</p>
+
+				<button class="collapsible_right">Simplification:</button>
+				<div class="content_right">
+				 	<p class="collapsible_text_right">
+				 		\begin{align}
+							H(p,q) 
+								&= H(p) - D(p \vert \vert q) \\
+								&= \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{1}{p(x)}} \big ] + \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{p(x)}{q(x)}} \big ]
+
+						\end{align}
+						<br>
+
+						We can simply and use J to signify this loss function.
+
+						\begin{align}
+							J(q) 
+								&= \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{1}{p(x)}} \big ] + \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{p(x)}{q(x)}} \big ] \\
+								&= \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{1}{p(x)} \frac{p(x)}{q(x)}}  \big ] \\
+								&= \mathbb{E}_{X \sim p(x)} \big [ \log{\frac{1}{q(x)}} \big ] \\
+								&= - \mathbb{E}_{X \sim p(x)} \big [ \log{q(x)} \big ] \\
+								&= - \sum_x p(x) \log(q(x)) \\
+								&= 
+									\!\begin{aligned}[t]
+										& - [p(x=\mathit{label_1}) \log(q(x=\mathit{label_1})) + \\
+										&        p(x=\mathit{label_2}) \log(q(x=\mathit{label_2}))]
+								  	\end{aligned} \\
+						\end{align}
+
+						Since, the probability of getting a label given the obseved data distribution is 1, and we are dealing with a binary labels, we can rewrite our objective to check if we have
+						the value of the first label; otherwise, we must have the label of the other. We'll call the value of the first label t, for 'target'.
+						\begin{align}
+							J(q) 
+								&= - [t \log(q(x)) + (1-t) \log(1-q(x))] 
+						\end{align}
+				 	</p>
+				 	<p class="right_block_space"> </p>
+					<p class="right_block_titles"> Note: <br> </p>
+					<p class="right_block_descriptions">
+						Another way to interpret \( D(x) \) and \( D(\hat{x}) \) is: <br> 
+						<ul class="right_block_list">
+						  <li>\( D(x) \) is the probability of getting a real image given a real image as input, \( D(x=\text{real_im}| \text{real_im}) \). </li>
+						  <li>\( D(\hat{x}) \) is the probability of getting a fake image given a fake image as input, \(x=D(\text{fake_im} | \text{fake_im}) \). </li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<h3 class="article_headers">III. Theory Pt.2:</h3>
+		<div class='format_block'>
+			<!-- LEFT BLOCK -->
+			<div class='format_block_left'>
+				<p>
+					Problem: 
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						You may have realized, differentiating the objective function for the generator G might seem a bit odd.
+					</p>
+
+					<p class="equation_left_indent_1">
+							\begin{equation} 
+									J_D = - [t \log(D(x)) + (1-t) \log(1-D(x))]
+							\end{equation}<br>
+					</p>
+
+					<p class="equation_left_indent_1">
+							\begin{align}
+								\frac{\partial{J_G}}{\partial{\theta_G}} 
+									&= - \bigg[ \frac{\partial}{\partial{\theta_G}} \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \frac{\partial}{\partial{\theta_G}} \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(G(z)))} \bigg ] \\
+									&= - \bigg[ 0 + \frac{\partial}{\partial{\theta_G}} \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(G(z)))} \bigg ]
+							\end{align}
+					</p>
+					<p class='left_indented_p1'>
+						Since the gradient (above) is proportional to the amount of change that the parameters update, then the change during the beginning epoch would be very slow. If D gets much better than G, then \( D(G(z)) \rightarrow 0\). In this region, the slope is the smallest and G has little chance to learn. <br><br>
+					</p>
+				</div>
+
+
+				<p>Solution:</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						We can use a different cost function that will respect the behavior of the original. Let's recall the loss function for G again.
+					</p>
+
+					<p class="equation_left_indent_1">
+							\begin{align}
+								J_G
+									&= \min_{G} \mathbb{E}_{X \sim p(x)} \big [ \log{D(x)} \big ] + \mathbb{E}_{Z \sim p(z)} \big [ \log{(1-D(G(z)))} \big ] 
+							\end{align}
+					</p>
+
+					<p class='left_indented_p1'>
+						<ul class="left_block_list">
+							<li>
+								The first terms is referring to the expectation of D predicting an input image is a real given a real image. This term has no dependence on the parameters of G, so differentiating over them leads to a gradient of zero. This terms cancels out and we have seen.
+							</li>
+							<li>
+								The second term is referring to minimizing D predicting an input image is a fake given a fake image generated by G. Here's where we can try to rephrase this while keeping the essence intact: maximize the expectation of D predicting an input image is real given a fake image generated by G.
+							</li>
+						</ul>
+					</p>
+
+					<p class='left_indented_p1'>
+						This solution is often named a <i>Non-Saturating Heuristic</i>. <i>Non-Saturating</i> in that the gradient is not saturating - the gradient isn't coverging onto some single value. This is good, because we the gradient to be large when the error is large. <i>Heuristic</i> because this is a non-theoretical solution that instead is derived by numerical means. <br><br>
+
+						Notice also that this solution removes all theoretical analysis using Game Theory, since we no longer have a zero-sum-game. Namely, the loss of D and G don't add to 0, \( J_D + J_G \neq 0 \) 
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+							J_G
+								&= \max_{G} \mathbb{E}_{Z \sim p(z)} \big [ \log{(D(G(z)))} \big ] \\
+								&= \min_{G} -\mathbb{E}_{Z \sim p(z)} \big [ \log{(D(G(z)))} \big ]
+						\end{align}
+					</p>
+				</div>
+			</div>
+			<div class='format_block_right'>
+				<!-- <img src="gan_im_1.png" alt="Girl in a jacket"> -->
+			</div>
+		</div>
+
+		<h3 class="article_headers">IV. Analysis:</h3>
+		<div class='format_block'>
+			<!-- LEFT BLOCK -->
+			<div class='format_block_left'>
+				<p>
+					Model Types: 
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						One of the more prevalent GAN types is the Deep Convolutional GAN (DCGAN). It's name stems from the fact its architecture stems from the <i>All-Convolutional Network</i>, which revolves around a simplified LeNet; rather than involving the convolutional and pooling layers of LeNet, All-Convolutional only using convolutional layers and using a convolutional strides of 1 to reduce the dimensionality at each layer.
+					</p>
+					<p class="left_block_space"> </p>
+
+				</div>
+			</div>
+
+			<div class='format_block_right'>
+			</div>
+		</div>
+
+	</section>
+
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.maxHeight){
+		      content.style.maxHeight = null;
+		    } else {
+		      content.style.maxHeight = content.scrollHeight + "px";
+		    } 
+		  });
+		}
+
+		var coll = document.getElementsByClassName("collapsible_right");
+		var i;
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.maxHeight){
+		      content.style.maxHeight = null;
+		    } else {
+		      content.style.maxHeight = content.scrollHeight + "px";
+		    } 
+		  });
+		}
+	</script>
+</body>
+
+<!-- <footer>
+	<hr class="footer_line">
+	<h3>Sources</h3>
+</footer> -->
+</html>
