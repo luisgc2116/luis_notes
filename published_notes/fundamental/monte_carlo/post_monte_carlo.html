@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Intellectus EX-Machina</title>
+	<meta name="viewpoint" content="width=device-width, initial-scale=1">
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  	<script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  	</script> -->
+	<link rel="blog1" 
+		href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+	  	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	  	crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="posts.css">
+	<meta charset="utf-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Google Fonts loaded here depending on setting in _data/options.yml true loads font, blank does not-->
+	<link href='//fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
+	<!-- Load up MathJax script if needed ... specify in /_data/options.yml file-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML"></script>
+	<link rel="canonical" href="https://luisgc2116.github.io/luis_notes/">
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+
+<body>
+    <!--- Header and nav template site-wide -->
+	<header>
+	    <nav class="group">
+	    <a href="/luis_notes/" class="header_items">Contents</a>
+	    <a href="https://github.com/luisgc2116/" class="header_items">GitHub</a>
+	    </nav>
+	</header>
+
+	<section>
+		<h2 class="article_headers">Foundations of Probability: Monte Carlo</h2>
+		
+		<h3 class="article_headers">I. Introduction:</h3>
+		<div class='format_block'>
+			<div class='format_block_left'>
+				<p class="left_block_text">
+					Main Idea:
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						Monte Carlo sampling revolves around the idea of <i>estimation using sampling</i>. In statistics and machine learning, we are often trying to estimate, or approximate <i>distributions or expected values by sampling</i>. <br><br>
+					</p>
+					<div class="left_block_text_indent_2">
+						<p class='left_indented_p2'>
+								<i>Largely, the expectations or distrutions we are trying to estimate are intractible, and so approximation is usually the best method toward inference. </i> 
+						</p>
+					</div>
+				</div>
+				<button class="collapsible">More on Background and History:</button>
+					<div class="content">
+					 	<p class="collapsible_text">
+					 		Monte Carlo was originally named after the region in Monaco by researchers working in the Manhattan Project. This method of sampling, although seen as crude and inefficient, had the benefit of being incredibly fast. Monte Carlo simulations was such an impactful method that it was noted to be essential to the developement of the Hydrogen bomb.
+					 	</p>
+					</div>	
+			</div>
+			<div class='format_block_right'>
+				
+			</div> 
+		</div>
+
+		<h3 class="article_headers">II. Theory Pt.1:</h3>
+		<div class='format_block'>
+			<!-- LEFT BLOCK -->
+			<div class='format_block_left'>
+				<p>
+					Initial Definition: 
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						Although a clear, fine-grained definition of Monte Carlo is often debated, one of the simplest and accepted definitions is that the expectation of a function f can be approximated by the sample mean of samples coming from a distribution \( p(x) \). 
+					</p>
+
+					<p class="equation_left_indent_1">
+							\begin{align} 
+								\mathbb{E}_{X \sim p(x)} [f(x)] &\approx \frac{1}{N} \sum_{s=1}^{N} f(x_s) \\
+								x_s &\sim p(x)
+							\end{align}<br>
+					</p>
+				</div>
+
+				<p>A Few Remarks</p>
+				<div class='format_block_left'>
+					<ul class="left_block_list_normal">
+						<li>
+							Monte Carlo is an unbiased estimator, meaning: the expected value of the random variable \( \hat{\mu}_n \), which comes from the distribution of the sample means, is equal to the expected value of the function, or 
+							$$ \mathbb{E}[\hat{\mu}_n] = \mathbb{E}[f(x)] $$
+						</li>
+						<li>
+							Monte Carlo is a consistent estimator that follows the Weak Law of Large Numbers (ie.) given that the varianace of f(x) is not infinity, or \(
+							\text{Var}(f(x)) \). We can also express this as 
+							\begin{align}
+								\hat{\mu}_n \xrightarrow[]{\text{p}} \mathbb{E}(f(x)) \text{ as n} \rightarrow \inf
+							\end{align}
+
+							In other words, we can say that for any \( \epsilon \), the distance between the distrubtion space by the sample mean \( \hat{\mu}_n \) and the expected value of f(x),  \( \mathbb{E}(f(x)) \), will decrease such that the probability of that distance being less than \( \epsilon \) goes to 1 as the number of samples n, increases, 
+							\begin{align}
+								(\forall \epsilon > 0, p(\vert \hat{\mu}_n - \mathbb{E}[f(x)] \vert < \epsilon) \rightarrow 1 \text{  as  n} \rightarrow \inf
+							\end{align}
+						</li>
+						<li>
+							Once again following the same logic as above, as n goes to infinity, the error and variance should get smaller, so
+							\begin{equation}
+								\sigma^2(\hat{\mu}_n) = \frac{1}{n}\sigma^2(f(x)) \rightarrow 0 
+							\end{equation}
+
+							Another way to interpret this is that the mean squared error, given that our bias is zero, is just the variance of \( \hat{\mu}_n \). This value goes to zero as more samples are used.  
+							\begin{align}
+								\sigma^2(\hat{\mu}_n) &= MSE(\hat{\mu}_n) \\
+									&= \text{bias}^2 + \text{var} \\
+									&= \frac{1}{n}\sigma^2(f(x)) \rightarrow 0 
+							\end{align}
+
+
+							Furthermore, since \( \frac{1}{n} \) is the constant scaling \(\sigma^2(f(x))\) as it goes to zero, it's often said the <i>the variance decreases by a rate of</i> \( \frac{1}{n} \). Or equally, <i>the standard deviation decreases by a rate of</i> \( \frac{1}{\sqrt{n}} \).
+							<br><br>
+						</li>
+						<li>
+							It's assumed that we are sampling efficiently from the distribution, since sampling from less probable regions would cause approximation errors.
+						</li>
+					</ul>
+
+					<button class="collapsible">Example 1: Area of an Object</button>
+					<div class="content">
+					 	<p class="collapsible_text">
+					 		Let's say we have a circle circumscibed onto a square. Here the area of the circle is \( A(\text{circle})=\pi r^2 \) and the area of the square is \( A(\text{square})= 4r^2 \). The ratio of the area of the circle to the area of the square is then 
+					 		\( \frac{A(\text{circle})}{A(\text{square})}= \frac{\pi r^2}{4 r^2} = \frac{\pi}{4} \). <br><br>
+
+					 		Let's approximate this ratio by asking: <i>if we randomly threw points in the area of the square, what is the ratio of points that land in the circle to the total number of thrown points</i>. 
+
+					 		\begin{align}
+					 			\frac{A(\text{circle})}{A(\text{square})} 
+					 				&= \mathbb{E} \bigg[ \frac{\text{num_points_inside_circle}}{\text{tot_num_points}} \bigg] \\
+					 				&\approx \sum_i^N \bigg( \frac{\text{num_points_inside_circle}}{\text{tot_num_points}} \bigg) \\
+					 				&\approx \frac{1}{N} \sum_i^N \bigg( text{num_points_inside_circle} \bigg) \\
+					 				&\approx \frac{1}{N} \sum_i^N (x_i^2 + y_i^2 \leq r^2) \\
+					 				&= \text{sample_ratio}
+					 		\end{align}
+
+					 		Typically, this example is used to approximate \( \pi \), because as this sample ratio gets better, we have that it equals \( \frac{\pi}{4} \). Therefore, we can just approximate \( \pi \) as \( \pi = 4 \cdot \text{sample_ratio} \) .
+					 		<br><br>
+					 	</p>
+					</div>	
+				</div>	
+			</div>
+
+ 
+
+			<!-- RIGHT BLOCK -->
+			<div class='format_block_right'>
+
+				<p class="right_block_titles"> Note: <br> </p>
+				<p class="right_block_descriptions">
+					Another interesting fact about the variance converging at a rate of \( \frac{1}{n} \) is that this rate is <b>independent</b> of the number of dimensions in x. This is due to the sampling f(x) assuming a one dimensional quantity.
+				</p>
+
+				
+			</div>
+		</div>
+
+	</section>
+
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.maxHeight){
+		      content.style.maxHeight = null;
+		    } else {
+		      content.style.maxHeight = content.scrollHeight + "px";
+		    } 
+		  });
+		}
+
+		var coll = document.getElementsByClassName("collapsible_right");
+		var i;
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.maxHeight){
+		      content.style.maxHeight = null;
+		    } else {
+		      content.style.maxHeight = content.scrollHeight + "px";
+		    } 
+		  });
+		}
+	</script>
+</body>
+
+<!-- <footer>
+	<hr class="footer_line">
+	<h3>Sources</h3>
+</footer> -->
+</html>
