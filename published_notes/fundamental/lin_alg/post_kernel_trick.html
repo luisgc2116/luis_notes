@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Intellectus EX-Machina</title>
+	<meta name="viewpoint" content="width=device-width, initial-scale=1">
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  	<script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  	</script> -->
+	<link rel="blog1" 
+		href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+	  	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	  	crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="posts.css">
+	<meta charset="utf-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Google Fonts loaded here depending on setting in _data/options.yml true loads font, blank does not-->
+	<link href='//fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
+	<!-- Load up MathJax script if needed ... specify in /_data/options.yml file-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML"></script>
+	<link rel="canonical" href="https://luisgc2116.github.io/luis_notes/">
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+
+<body>
+    <!--- Header and nav template site-wide -->
+	<header>
+	    <nav class="group">
+	    <a href="/luis_notes/" class="header_items">Contents</a>
+	    <a href="https://github.com/luisgc2116/" class="header_items">GitHub</a>
+	    </nav>
+	</header>
+
+	<section>
+		<h2 class="article_headers">Foundations of Linear Algebra: Kernel Trick</h2>
+		
+		<h3 class="article_headers">I. Introduction:</h3>
+		<div class='format_block'>
+			<div class='format_block_left'>
+				<p class="left_block_text">
+					Main Idea:
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						The Kernel Trick is a way to find distances in a higher dimensional space without needing to explicitely span that space. In essence, the Kernel allows you find the dot product distance between points in a different space without needing to find the function that spans that space explicitely.
+					</p>
+					<div class="left_block_text_indent_2">
+						<p class='left_indented_p2'>
+								<i>The Kernel function can be said to be the inner product between points in the linear space onto a higher dimensional space.</i> 
+						</p>
+					</div>
+				</div>
+				<button class="collapsible">More on Background and History:</button>
+					<div class="content">
+					 	<p class="collapsible_text">
+					 		The Kernel Trick (or Kernel Method) is often associated with Support Vector Machines (SVMs), and have been known for being incredibly effective at classification tasks. 
+					 	</p>
+					</div>	
+			</div>
+			<div class='format_block_right'>
+				
+			</div> 
+		</div>
+
+		<h3 class="article_headers">II. Theory Pt.1:</h3>
+		<div class='format_block'>
+			<!-- LEFT BLOCK -->
+			<div class='format_block_left'>
+				<p>
+					Definition: 
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						The Kernel Trick finds the inner product of a different space without needing to find the function(or transormation) that spans that space. Let's say we have input \( \mathbf{X} \in \mathbb{R}^D \), if we wanted to span this input into a different dimentional space, we can find a transformation \( \phi(\mathbf{X}) : \mathbb{R}^D  \rightarrow \mathbb{R}^M\) that changes \( \mathbf{X} \) to a different dimensional space. The challenge here is: <i>what if we don't know the transformation</i> \( \phi \)?
+						<br><br>
+					</p>
+				</div>
+				
+				<p>
+					A Look Back at Regression:
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						Let's begin our journey by stating the usual method of regression. If we have a input \( \mathbf{X} \), with weights \( \mathbf{W} \), predictions \( \hat{\mathbf{Y}} \) and labels \( \mathbf{Y} \), we can write,
+					</p>
+				
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    \hat{\mathbf{Y}} &= \mathbf{X}\mathbf{W} \\
+						    \hat{\mathbf{Y}} &= \mathbf{\phi(X)}  \;  \mathbf{W}       
+						\end{align}
+					</p>
+
+					<p class='left_indented_p1'>
+						To find the optimal parameters that fit \( \mathbf{Y} \), \(  \mathbf{W}^* \), we find the minimum of an object function (or loss function). The objective function here is the residual error, or ordinary least squares, between the label \( \mathbf{Y} \) and the predicted \( \hat{\mathbf{Y}} \) as follows. To do this, we find the minimum value of this loss function. One way to do this is to find the point at which the gradient is lowest. This can be written as follows:
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    J(W) 
+						        &= (\mathbf{Y} -  \phi \; \mathbf{W})^2 \; + \; \frac{\lambda}{2} \vert\vert {\mathbf{W}} \vert\vert
+						\end{align}
+
+						\begin{equation}
+						    \frac{\partial{}}{\partial{\mathbf{W}}} J(\mathbf{W}) = 0
+						\end{equation} 
+
+						\begin{equation}
+						    \mathbf{W}^* = \underset{x}{\mathrm{argmin}} \; J(\mathbf{W}) 
+						\end{equation}
+
+					</p>
+
+					<p class='left_indented_p1'>
+						Solving for \(  \mathbf{W}^* \), we find the solution below:
+					</p>
+
+					<p class="equation_left_indent_1">
+
+						\begin{align}
+						    \mathbf{W^*} 
+						        &= (\mathbf{X^T}\mathbf{X} + \lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{Y} \\
+						        &= (\mathbf{\phi}^T\mathbf{\phi} + \lambda \mathbf{I})^{-1}\mathbf{\phi}^T\mathbf{Y}
+						\end{align}
+					</p>
+
+				</div>
+
+				<p>
+					Problem:
+				</p>
+				<div class="left_block_text_indent_1">
+					<p class='left_indented_p1'>
+						One major issue with this solution is that we are assuming that we know the transformation \( \mathbf{\phi} \) that spans the dimensional space we are attempting to find distances from. In order to overcome this problem, we <i>MUST make our solution independent of this transformation</i>.
+						<br><br>
+
+						To do this we look back at the object function \( J(W) \) once again and rewrite the exact closed solution in a different way:
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    J(W) 
+						        &= (\mathbf{Y} -  \phi \; \mathbf{W})^2 \; + \; \frac{\lambda}{2} \vert\vert {\mathbf{W}} \vert\vert
+						\end{align}
+
+						\begin{align}
+						    \mathbf{W^*} 
+						        &= (\mathbf{\phi}^T\mathbf{\phi} + \lambda \mathbf{I})^{-1}\mathbf{\phi}^T\mathbf{Y}
+						\end{align}
+
+						\begin{align}
+						    J(W) 
+						        &= \sum_{i=1}^N (\mathbf{Y}_i - \phi_i \; \vec{\mathbf{W}_i})^2 \; + \; \frac{\lambda}{2}\sum_{i=1}^N \vert\vert {\mathbf{W}_i} \vert\vert
+						\end{align}
+
+						\begin{align}
+						    \mathbf{W^*} 
+						        &= \frac{1}{\lambda} \sum_{i=1}^N (\mathbf{Y}_i - \mathbf{\phi}_i \mathbf{W}_i) \: \mathbf{\phi}_i \\
+						        &= \sum_{i=1}^N \alpha_i \: \mathbf{\phi}_i \\
+						        &= \mathbf{\phi} \; \mathbf{\alpha} \\
+						\end{align}
+					</p>
+
+					<p class='left_indented_p1'>
+						To make things more organized, let's just have:
+					</p>
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    \alpha 
+						        &= \frac{1}{\lambda} \sum_{i=1}^N (\mathbf{Y}_i - \mathbf{\phi}_i \mathbf{W}_i)
+						\end{align}
+					</p>
+
+					<p class='left_indented_p1'>
+						Now that we have the optimal weights are \( W = \phi \; \alpha \), we can put this value back into our original objective function \( J(W) \), which is now \( J(\alpha) \), and differentiate with respect to \( \alpha \) and find the minimum. Again, to find the minimum point of the gradient function, you take the gradient and set it to zero.
+					</p>
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    J(W) 
+						        &= (\mathbf{Y} -  \phi \; \mathbf{W})^2 \; + \; \frac{\lambda}{2} \vert\vert {\mathbf{W}} \vert\vert\\
+						        &= (\mathbf{Y} - \mathbf{\phi} \mathbf{W}))^T (\mathbf{Y} - \mathbf{\phi} \mathbf{W})) + \frac{\lambda}{2} \mathbf{W}^T \mathbf{W} \\
+						        &= \mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T \mathbf{\phi}\mathbf{W} - \mathbf{W}^T\mathbf{\phi}^T\mathbf{Y} + \mathbf{W}^T \mathbf{\phi}^T \mathbf{\phi} \mathbf{W} + \frac{\lambda}{2} \mathbf{W}^T \mathbf{W}\\
+						        &= \mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T \mathbf{\phi}(\mathbf{\phi}^T\mathbf{\alpha}) - (\mathbf{\phi}^T\mathbf{\alpha})^T\mathbf{\phi}^T\mathbf{Y} + (\mathbf{\phi}^T\mathbf{\alpha})^T \mathbf{\phi}^T \mathbf{\phi} (\mathbf{\phi}^T\mathbf{\alpha}) + \frac{\lambda}{2} (\mathbf{\phi}^T\mathbf{\alpha})^T (\mathbf{\phi}^T\mathbf{\alpha})\\
+						        &= \mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T \mathbf{\phi}\mathbf{\phi}^T\mathbf{\alpha} - \mathbf{\alpha}^T\mathbf{\phi}\mathbf{\phi}^T\mathbf{Y} + \mathbf{\alpha}^T\mathbf{\phi} \mathbf{\phi}^T \mathbf{\phi} \mathbf{\phi}^T\mathbf{\alpha} + \frac{\lambda}{2} \mathbf{\alpha}^T\mathbf{\phi} \mathbf{\phi}^T\mathbf{\alpha} 
+						\end{align}
+					</p>
+					<p class='left_indented_p1'>
+						Notice how whenever \( \phi \) appears now, it <i>only appears in the context of </i> \( \mathbf{\phi} \mathbf{\phi}^T \). This expression is typically called the Kernel Matrix, or Gram Matrix, and is typically denoted as K, \( K = \mathbf{\phi} \mathbf{\phi}^T \). This matrix has two important properties:
+
+						<ul class="left_block_list_normal">
+							<li>
+								It is symmetric, so \( K = K^T \)
+							</li>
+							<li>
+								It is positive semi-definite, so \( \alpha^T K \alpha \geq 0 \)
+							</li>
+						</ul>
+
+						These two properties fulfill the requirements for Mercer's Theorem as follows:
+						<br><br>
+					</p>
+
+					<p class="left_theorem_indented_p1">
+						Mercer's Theorem:
+						<br><br>
+						A symmetric function \( K(x,y) \) can be expressed as an inner product 
+						$$ K(x,y) =  \langle \phi(x), \phi(y) \rangle$$
+						for some \( \phi \) if and only if \( K(x,y) \) is positive semi-definite.
+					</p>
+
+					<p class='left_indented_p1'>
+						In other words, we can use a kernel function k that computes the distance between two points in the space of \( \phi \) without needing to know \( \phi \) itself.
+					</p>
+
+					<p class="equation_left_indent_1">
+						
+						\begin{align}
+						    \phi \phi^T 
+						        &= 
+						            \begin{bmatrix}
+						                 \langle \phi(x_1), \phi(x_1) \rangle & \dots  & \langle \phi(x_1), \phi(x_n) \rangle \\
+						                \vdots & \ddots & \vdots \\
+						                \langle \phi(x_n), \phi(x_1) \rangle  & \dots & \langle \phi(x_n), \phi(x_n) \rangle
+						            \end{bmatrix} \\
+						            &= 
+						            \begin{bmatrix}
+						                k(x_1,x_1)  & \dots  &  k(x_1,x_n)  \\
+						                \vdots & \ddots & \vdots \\
+						                k(x_n,x_1)   & \dots &  k(x_n,x_n) 
+						            \end{bmatrix} \\
+						\end{align}
+					</p>
+
+					<p class="equation_left_indent_1">
+						Since Kernel functions only reflect the inner product of a function, they cannot tell us too much about the space \( \phi \) which they come from. Kernel function are therefore named after the characteristics of that function rather than that of \( \phi \) itself. However, they can indicate whether certain data may be better fit for certain Kernel functions (eg. A polynomial decision boundary may be better fit for a Polynomial Kernel).
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    \text{Linear: } K(X_i, X_j) &= (X_i^T X_j + r)^r \\
+						    \text{Polynomial: } K(X_i, X_j) &= X_i^T X_j \\
+						    \text{Gaussian: } K(X_i, X_j) &= \exp{\bigg(-\frac{\vert \vert X_i - X_j \vert \vert}{2 \sigma^2} \bigg)} \\
+						    \text{Laplace: } K(X_i, X_j) &= \exp{\big(-\alpha \vert \vert X_i - X_j \vert \vert \big)}
+						\end{align}
+					</p>
+				</div>
+			</div>
+
+			<!-- RIGHT BLOCK -->
+			<div class='format_block_right'>
+
+				<p class="right_block_titles"> Note: <br> </p>
+				<p class="right_block_descriptions">
+					Here we write \( \mathbf{\phi(X)} \) as just \( \mathbf{\phi} \) in order to keep the operations more readable.
+				</p>
+			</div>
+		</div>
+
+
+		<h3 class="article_headers">III. Theory Pt.2:</h3>
+		<div class='format_block'>
+			<!-- LEFT BLOCK -->
+			<div class='format_block_left'>
+				<p>
+					Putting everything together:
+				</p>
+				<div class='format_block_left'>
+
+					<p class="equation_left_indent_1">
+						The final step now is to take the objective function \( J(\alpha) \) in terms of our Kernel matrix and find the minima of \( J(\alpha) \) by differentiating it with respect to \( \alpha \):
+					</p>
+
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    J(\alpha) 
+						        &= \mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T K\mathbf{\alpha} - \mathbf{\alpha}^T K \mathbf{Y} + \mathbf{\alpha}^T K^2 \mathbf{\alpha} + \frac{\lambda}{2} \mathbf{\alpha}^T K \mathbf{\alpha} \\ 
+						        &= \mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T K\mathbf{\alpha} - \mathbf{Y}^T K \mathbf{\alpha} + \mathbf{\alpha}^T K^2 \mathbf{\alpha} + \frac{\lambda}{2} \mathbf{\alpha}^T K \mathbf{\alpha} \\
+						        &= \mathbf{Y}^T\mathbf{Y} - 2 \mathbf{Y}^T K\mathbf{\alpha} + \mathbf{\alpha}^T K^2 \mathbf{\alpha} + \frac{\lambda}{2} \mathbf{\alpha}^T K \mathbf{\alpha}
+						\end{align}
+
+						\begin{align}
+						    \frac{\partial}{\partial{\alpha}} J(\alpha) 
+						        &= 0 - 2 \mathbf{Y}^T K + 2 \mathbf{\alpha}^T K^2 + \lambda \mathbf{\alpha}^T K \\
+						        &= -2 \mathbf{Y}^T + 2 \mathbf{\alpha}^T K + \lambda \mathbf{\alpha}^T 
+						\end{align}
+
+
+
+						\begin{align}
+						    2 \mathbf{\alpha}^T K + \lambda \mathbf{\alpha}^T  &= 2 \mathbf{Y}^T \\
+						    \mathbf{\alpha}^T (2K + \lambda \mathbf{I}^T) &= 2 \mathbf{Y}^T \\
+						    \mathbf{\alpha}^T (K + \frac{\lambda}{2} \mathbf{I}) &= \mathbf{Y}^T 
+						\end{align}
+
+						\begin{align}
+						    \mathbf{\alpha}^T &= \mathbf{Y}^T (K + \frac{\lambda}{2} \mathbf{I})^{-1} \\
+						    \mathbf{\alpha^*} &= (K + \frac{\lambda}{2} \mathbf{I})^{-1} \mathbf{Y}
+						\end{align}
+					</p>
+
+					<p class='left_indented_p1'>
+						Finally, remembering that \( \mathbf{W} = \mathbf{\phi^T} \mathbf{\alpha} \), we have a value for \( \mathbf{W} \) we can use during prediction,
+
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    \mathbf{W} 
+						        &= (\mathbf{\phi^T}\mathbf{\phi} + \lambda \mathbf{I})^{-1}\mathbf{\phi}^T\mathbf{Y}
+						\end{align}
+
+						\begin{align}
+						    \mathbf{W}
+						        &= \mathbf{\phi}^T \mathbf{\alpha} \\ 
+						        &= \mathbf{\phi}^T (K + \frac{\lambda}{2} \mathbf{I})^{-1} \mathbf{Y} \\
+						        &= \mathbf{\phi}^T (\mathbf{\phi}\mathbf{\phi}^T + \frac{\lambda}{2} \mathbf{I})^{-1} \mathbf{Y} \\
+						        &= \mathbf{\phi}^T (K + \frac{\lambda}{2} \mathbf{I})^{-1} \mathbf{Y}
+						\end{align}
+					</p>
+
+					<p class='left_indented_p1'>
+						For prediction, we can rewrite everything in terms of the Kernel Matrix 
+
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    \mathbf{Y}
+						        &= \mathbf{\phi} \; \mathbf{W} \\ 
+						        &= \mathbf{\phi} \mathbf{\phi^T} (K + \frac{\lambda}{2} \mathbf{I})^{-1} \mathbf{Y} \\
+						        &= \mathbf{Y}^T (K + \frac{\lambda}{2} \mathbf{I})^{-1} (\mathbf{\phi} \mathbf{\phi}^T)^T \\
+						        &= \mathbf{Y}^T (K + \frac{\lambda}{2} \mathbf{I})^{-1} \mathbf{\phi}^T \mathbf{\phi} \\
+						        &= \mathbf{Y}^T (K + \frac{\lambda}{2} \mathbf{I})^{-1} K_x
+						\end{align}
+					</p>
+
+					<p class='left_indented_p1'>
+						Here, \( K_x \) is simply the Kernel function with parameters of every value of x previously seen, and a new unseen value \( x_{\text{new_input}} \).
+
+					</p>
+
+					<p class="equation_left_indent_1">
+						\begin{align}
+						    K(x) = \phi^T \phi_x
+						        &=
+						            \begin{bmatrix}
+						                k(x_1,x_{\text{new_input}})  \\
+						                \vdots \\
+						                k(x_n,x_{\text{new_input}}) 
+						            \end{bmatrix} \\
+						\end{align}
+					</p>
+				</div>	
+			</div>
+
+			<!-- RIGHT BLOCK -->
+			<div class='format_block_right'>
+
+				<p class="right_block_titles"> Note: <br> </p>
+				<p class="right_block_descriptions">
+					Here we write \( \mathbf{\phi(X)} \) as just \( \mathbf{\phi} \) in order to keep the operations more readable.
+				</p>
+			</div>
+		</div>
+
+		<div class="left_block_space">
+		</div>
+	</section>
+
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.maxHeight){
+		      content.style.maxHeight = null;
+		    } else {
+		      content.style.maxHeight = content.scrollHeight + "px";
+		    } 
+		  });
+		}
+
+		var coll = document.getElementsByClassName("collapsible_right");
+		var i;
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var content = this.nextElementSibling;
+		    if (content.style.maxHeight){
+		      content.style.maxHeight = null;
+		    } else {
+		      content.style.maxHeight = content.scrollHeight + "px";
+		    } 
+		  });
+		}
+	</script>
+</body>
+
+<!-- <footer>
+	<hr class="footer_line">
+	<h3>Sources</h3>
+</footer> -->
+</html>
